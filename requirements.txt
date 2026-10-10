@@ -1,0 +1,11 @@
+# Core scientific and statistical packages
+numpy>=1.26.0
+scipy>=1.12.0
+pandas>=2.2.0
+
+# Domain-specific libraries
+biopython>=1.83
+nltk>=3.8.1
+
+# Note: Python 3.10+ required.
+# Reference benchmark environment: Python 3.12.3 (see data/ENVIRONMENT.txt)

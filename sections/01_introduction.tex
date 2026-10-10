@@ -1,0 +1,47 @@
+\section{Introduction}\label{sec:intro}
+Shannon opened his theory of communication by taking meaning out of it: ``These semantic aspects of communication are irrelevant to the engineering problem'' \citep{shannon1948}.
+The sentence describes a problem, not the world. Weaver, introducing the theory to a wider readership, separated a technical problem (how accurately symbols are transmitted), a semantic problem (how precisely they convey the intended meaning) and an effectiveness problem (how well the received meaning affects conduct) \citep{weaver1949}.
+The first has a complete solution. The second has drawn many proposals \citep{barhillel1953,floridi2011,bao2011,kolchinsky2018}, but none with the plain, exact accounting that Shannon gave the first.
+
+This paper gives such an accounting. Take a source in which every message has a form $X$, what is said, and a meaning $W$, what is meant.
+Two facts hold of every language. Many forms can carry one meaning: synonymy. One form can carry many meanings: ambiguity.
+The entropy $H(X)$ of the forms mixes the two consequences. It counts the meaningful choices the speaker makes together with the meaningless freedom the speaker keeps, and it is silent about what the listener cannot recover.
+We separate them. Call $C=H(W)$ the \emph{content}, $E=H(X)$ the \emph{expression}, $\Lat=H(X\given W)$ the \emph{latitude}, $\Dbt=H(W\given X)$ the \emph{doubt} and $I=I(W;X)$ the \emph{conveyance}. Then
+\begin{equation*}
+E=I+\Lat,\qquad C=I+\Dbt,\qquad\text{hence}\qquad E-C=\Lat-\Dbt .
+\end{equation*}
+What is said exceeds what is meant by exactly the freedom of the speaker minus the doubt of the listener (\cref{thm:ledger}).
+
+The ledger is the chain rule of entropy applied to a pair, and no more. The paper asks what it is good for. The answers, in the order they appear, are these.
+\begin{enumerate}
+\item \emph{Meaning without an annotator} (\cref{sec:meaning}). If $Y$ is what a receiver will act on, the meaning of a message for that purpose is the belief $P(Y\given x)$ it induces. This partition is the coarsest that loses no information about $Y$ (\cref{thm:derived}), it shrinks as the purpose weakens, and no partition is adequate for every purpose. The \emph{leakage} $I(X;Y\given W)$ tests a declared meaning against a purpose (\cref{thm:leak}).
+\item \emph{What the terms cost and buy} (\cref{sec:operational}). Sending the form and then resolving the meaning costs $\Lat$ bits more than sending the meaning, whatever the doubt (\cref{thm:price}). In an idealized model with a shared key, latitude is a channel: exactly the number of bits per symbol that can be written into the form without changing the meaning or the statistics of the text (\cref{thm:channel}); the finite-precision implementation is analysed separately (\cref{prop:finite}). An unambiguous language with latitude $\Lat$ needs $2^{C+\Lat}$ forms (\cref{cor:vocab}).
+\item \emph{Estimation} (\cref{sec:estimation}). The plug-in ledger keeps every identity; its terms are biased, and we quantify how, with one certified interval and one validated protocol.
+\item \emph{Measurement} (\cref{sec:measurements}). The genetic code is the one natural language whose meaning map is physically implemented and exactly known. On six genomes we measure the ledger, the leakage about two purposes, and the capacity of latitude on real genes. In English, where synonymy and ambiguity both occur, we measure the ledger on a sense-tagged corpus and on sense inventories, and test how the answer depends on the definition of the form.
+\end{enumerate}
+\paragraph{What is and is not new.} The identities of \cref{thm:ledger} are the chain rule, and for a deterministic meaning map they are the grouping property that Shannon stated in the same paper \citep{shannon1948}.
+The canonical meaning of \cref{thm:derived} is the minimal sufficient statistic \citep{fisher1922,blackwell1953} in the vocabulary of the information bottleneck \citep{tishby2000} and of causal states \citep{shalizi2001}.
+The price of saying is Shannon's source coding theorem, and latitude as a channel is the capacity of provably secure steganography \citep{cachin1998,hopper2002} written in the ledger's terms.
+What we offer is the vocabulary in which these facts read as one account, the purpose-relative definition of meaning with the leakage and depth identities that follow from it, the vocabulary law, an exact failure probability for the latitude channel, and measurements on real data. \cref{tab:results} lists each result with what it rests on, so that no statement is mistaken for more than it is.
+\begin{table}[tbp]
+\caption{Results and what each rests on.}\label{tab:results}
+\small
+\begin{tabular}{@{}p{2.6cm}>{\raggedright\arraybackslash}p{7.3cm}>{\raggedright\arraybackslash}p{4.1cm}@{}}
+\toprule
+Result & Statement & Rests on \\
+\midrule
+\cref{thm:ledger} & $E=I+\Lat$, $C=I+\Dbt$, $E-C=\Lat-\Dbt$ & chain rule \\
+\cref{cor:vocab} & an unambiguous language needs at least $2^{C+\Lat}$ distinct forms & $H(X)\le\log N$ \\
+\cref{prop:dist} & $\Lat+\Dbt$ is a distance between meaning and form & conditioning reduces entropy \\
+\cref{thm:derived} & meaning for purpose $Y$ is the belief $P(Y\given x)$: sufficient, coarsest, monotone in $Y$ & sufficiency; chain rule \\
+\cref{thm:leak} & leakage $I(X;Y\given W)$; abstraction leaks the relevance it discards; only injective maps are adequate for every purpose & chain rule; data processing \\
+\cref{prop:depth} & entropy and relevance each split over the levels of meaning & chain rule \\
+\cref{thm:price} & saying instead of meaning costs $\Lat$ bits per symbol, whatever the doubt & source coding theorem \\
+\cref{thm:channel}, \cref{prop:finite} & latitude is a channel of capacity $\Lat$ bits per symbol in an idealized model, with exact failure probability; bounds for a finite-precision implementation & Fano's inequality; arithmetic coding \\
+\cref{prop:cert} & certified interval for the entropy of a small alphabet & $L_1$ concentration; continuity of entropy \\
+\cref{sec:measurements} & six genomes, held-out genes, embedding in real genes, SemCor, verification & data and code supplied \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Reproducibility.} Every table entry and every number quoted in the text is written by scripts in the supplied archive from the raw sequence and corpus files (\cref{app:data}); none was transcribed.

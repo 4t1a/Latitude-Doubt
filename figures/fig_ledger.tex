@@ -1,0 +1,40 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize\sffamily]
+  % ------------------------------------------------ (a) the lexicon as a weighted bipartite graph
+  \node[anchor=west,font=\footnotesize\sffamily\bfseries] at (0.2,0.9) {(a)\enspace A lexicon is a joint law of meaning and form; line width is probability};
+  \foreach \lab/\pw/\y/\id in {river edge/{$\tfrac12$}/0/mE, tilt of an aircraft/{$\tfrac18$}/-1.25/mT, financial institution/{$\tfrac38$}/-2.5/mF}{
+    \node[anchor=east,text=meaning] (\id) at (5.6,\y) {\lab\ \textcolor{mute}{\pw}};
+  }
+  \foreach \lab/\pw/\y/\id in {shore/{$\tfrac14$}/0/xS, bank/{$\tfrac58$}/-1.25/xB, lender/{$\tfrac18$}/-2.5/xL}{
+    \node[anchor=west,text=form] (\id) at (8.9,\y) {\textcolor{mute}{\pw}\ \lab};
+  }
+  \foreach \a/\b/\p/\ya/\yb/\lab/\pos in {mE/xS/0.25/0/0/{$\tfrac14$}/0.5, mE/xB/0.25/0/-1.25/{$\tfrac14$}/0.22, mT/xB/0.125/-1.25/-1.25/{$\tfrac18$}/0.5, mF/xB/0.25/-2.5/-1.25/{$\tfrac14$}/0.22, mF/xL/0.125/-2.5/-2.5/{$\tfrac18$}/0.5}{
+    \draw[line width={13*\p pt},color=mute!55,line cap=round] (5.75,\ya) -- (8.75,\yb);
+    \node[fill=white,inner sep=1pt,font=\scriptsize\sffamily,text=mute] at ($(5.75,\ya)!\pos!(8.75,\yb)$) {\lab};
+  }
+  \node[font=\scriptsize\sffamily\itshape,text=mute,anchor=east] at (5.6,-3.25) {two forms for \emph{river edge}: synonymy};
+  \node[font=\scriptsize\sffamily\itshape,text=mute,anchor=west] at (8.9,-3.25) {three meanings for \emph{bank}: ambiguity};
+  % ------------------------------------------------ (b) the ledger tape
+  \node[anchor=west,font=\footnotesize\sffamily\bfseries] at (0.2,-4.35) {(b)\enspace The same law as a ledger; one bit is 3.4\,cm};
+  \pgfmathsetmacro{\bitcm}{3.4}\pgfmathsetmacro{\xo}{1.15}
+  \pgfmathsetmacro{\segD}{\ExD*\bitcm}\pgfmathsetmacro{\segI}{\ExI*\bitcm}\pgfmathsetmacro{\segL}{\ExS*\bitcm}
+  \pgfmathsetmacro{\xa}{\xo+\segD}\pgfmathsetmacro{\xb}{\xo+\segD+\segI}\pgfmathsetmacro{\xc}{\xo+\segD+\segI+\segL}
+  \fill[meaninglt] (\xo,-6.35) rectangle (\xa,-5.75);
+  \fill[conv] (\xa,-6.35) rectangle (\xb,-5.75);
+  \fill[form] (\xb,-6.35) rectangle (\xc,-5.75);
+  \draw[white,line width=0.8pt] (\xa,-6.35) -- (\xa,-5.75) (\xb,-6.35) -- (\xb,-5.75);
+  \node[text=ink] at ({(\xo+\xa)/2},-6.05) {$\Dbt$};\node[text=white] at ({(\xa+\xb)/2},-6.05) {$I$};\node[text=ink] at ({(\xb+\xc)/2},-6.05) {$\Lat$};
+  % braces: content above, expression below
+  \draw[decorate,decoration={brace,amplitude=4pt,raise=1pt},meaning,line width=0.7pt] (\xo,-5.68) -- (\xb,-5.68) node[midway,above=5pt,text=meaning] {Content\enspace $C=\Dbt+I=\ExC$};
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror,raise=1pt},form,line width=0.7pt] (\xa,-6.42) -- (\xc,-6.42) node[midway,below=5pt,text=form] {Expression\enspace $E=I+\Lat=\ExE$};
+  % names of the three parts
+  \node[font=\scriptsize\sffamily,text=mute,anchor=north,align=center] at ({(\xo+\xa)/2},-7.25) {Doubt\\[-1pt]$\ExD$};
+  \node[font=\scriptsize\sffamily,text=mute,anchor=north,align=center] at ({(\xa+\xb)/2},-7.25) {Conveyance\\[-1pt]$\ExI$};
+  \node[font=\scriptsize\sffamily,text=mute,anchor=north,align=center] at ({(\xb+\xc)/2},-7.25) {Latitude\\[-1pt]$\ExS$};
+  \node[anchor=west,font=\scriptsize\sffamily,text=mute] at (\xc+0.35,-6.05) {$H(W,X)=\Dbt+I+\Lat=\ExJ$};
+  \node[anchor=west,font=\scriptsize\sffamily,text=mute,align=left] at (\xc+0.35,-6.65) {$E-C=\Lat-\Dbt=\ExE-\ExC$};
+\end{tikzpicture}
+\caption{The ledger of a small lexicon. (a) Three meanings and three forms; the form \emph{bank} carries three meanings, the meaning \emph{river edge} two forms. (b) The joint entropy is cut into doubt $\Dbt=H(W\!\mid\! X)$, conveyance $I=I(W;X)$ and latitude $\Lat=H(X\!\mid\! W)$. Content is the first two parts, expression the last two; the overlap is what the form conveys. All quantities in bits.}
+\label{fig:ledger}
+\end{figure}

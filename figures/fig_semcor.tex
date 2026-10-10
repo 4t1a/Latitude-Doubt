@@ -1,0 +1,25 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[name=a,width=0.48\textwidth,height=5.6cm,xmode=log,xmin=0.85,xmax=60,ymin=0,ymax=1.3,xtick={1,2,5,10,20,50},xticklabels={1,2,5,10,20,50},
+  xlabel={$\tau$: every kept lemma and synset has $\geq\tau$ tokens},ylabel={bits},title={(a)\enspace estimates for the well-attested core},legend style={at={(0.97,0.97)},anchor=north east,draw=none,fill=none}]
+\addplot[name path=Dhi,draw=none,forget plot] table[x=tau,y=Dhi,col sep=comma]{data/semcor_tau.csv};
+\addplot[name path=Dlo,draw=none,forget plot] table[x=tau,y=Dlo,col sep=comma]{data/semcor_tau.csv};
+\addplot[meaning!18,forget plot] fill between[of=Dhi and Dlo];
+\addplot[name path=Shi,draw=none,forget plot] table[x=tau,y=Shi,col sep=comma]{data/semcor_tau.csv};
+\addplot[name path=Slo,draw=none,forget plot] table[x=tau,y=Slo,col sep=comma]{data/semcor_tau.csv};
+\addplot[form!25,forget plot] fill between[of=Shi and Slo];
+\addplot[meaning,thick,mark=*,mark size=1.8pt] table[x=tau,y=Dmm,col sep=comma]{data/semcor_tau.csv};
+\addplot[form,thick,mark=square*,mark size=1.8pt] table[x=tau,y=Smm,col sep=comma]{data/semcor_tau.csv};
+\legend{doubt $\Dbt$,latitude $\Lat$}
+\end{axis}
+\begin{axis}[at={(a.east)},anchor=west,xshift=1.5cm,width=0.48\textwidth,height=5.6cm,xmode=log,xmin=22,xmax=520,ymin=0,ymax=2,xtick={30,60,120,240,480},xticklabels={30,60,120,240,480},
+  xlabel={tokens of the item in the corpus},title={(b)\enspace by item frequency},yticklabels={},legend style={at={(0.97,0.03)},anchor=south east,draw=none,fill=none}]
+\addplot[meaning,thick,mark=*,mark size=1.8pt] table[x=mid,y=mean,col sep=comma]{data/semcor_doubt.csv};
+\addplot[form,thick,mark=square*,mark size=1.8pt] table[x=mid,y=mean,col sep=comma]{data/semcor_lat.csv};
+\legend{doubt of a lemma,latitude of a synset}
+\end{axis}
+\end{tikzpicture}
+\caption{The ledger of English content words in SemCor. (a) Doubt and latitude, Miller--Madow estimates with 95\,\% intervals from resampling documents, as the source is restricted to items with at least $\tau$ tokens. (b) Mean doubt per lemma and mean latitude per synset, among items with at least 20 tokens, in frequency bands. Doubt rises with frequency; latitude rises only slowly.}
+\label{fig:semcor}
+\end{figure}

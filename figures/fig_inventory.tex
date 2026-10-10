@@ -1,0 +1,18 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.80\textwidth,height=7.8cm,xmin=0.1,xmax=1.8,ymin=0.1,ymax=1.3,xlabel={latitude $\Lat$, bits},ylabel={doubt $\Dbt$, bits},
+  legend style={at={(0.5,-0.2)},anchor=north,legend columns=1,draw=none,font=\scriptsize\sffamily}]
+\addplot[dashed,color=mute,samples=2,domain=0.1:1.3,forget plot] {x};
+\addplot[only marks,mark=*,mark size=1.9pt,color=meaning,nodes near coords,point meta=explicit symbolic,every node near coord/.append style={font=\tiny\sffamily,text=mute,anchor=south west,inner sep=1pt}]
+  table[x=Lat,y=Dbt,meta=code,col sep=comma]{data/inventory_big.csv};
+\addplot[only marks,mark=square*,mark size=2.8pt,color=form,nodes near coords,point meta=explicit symbolic,every node near coord/.append style={font=\tiny\sffamily,text=form!70!black,anchor=south west,inner sep=1pt}]
+  table[x=Lat,y=Dbt,meta=code,col sep=comma]{data/inventory_eng.csv};
+\addplot[only marks,mark=diamond*,mark size=3.4pt,color=leak,nodes near coords,point meta=explicit symbolic,every node near coord/.append style={font=\tiny\sffamily,text=leak,anchor=south west,inner sep=1pt}]
+  table[x=Lat,y=Dbt,meta=code,col sep=comma]{data/inventory_semcor.csv};
+\legend{wordnets (pairs counted once),English WordNet,SemCor tokens (core $\tau=20$ and whole corpus)}
+\end{axis}
+\end{tikzpicture}
+\caption{Doubt against latitude. Blue: the $\InvN$ wordnets with at least $10{,}000$ synsets, each distinct (synset, lemma) pair counted once; orange: English WordNet 3.0; red diamonds: SemCor tokens, weighted by use (lemma, whole corpus; lemma and inflected word, $\tau=20$ core). Points above the dashed line have doubt greater than latitude. The balance has no fixed sign in the inventories, and flips between the lemma and the inflected word in the corpus.}
+\label{fig:inventory}
+\end{figure}

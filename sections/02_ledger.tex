@@ -1,0 +1,73 @@
+\section{The ledger}\label{sec:ledger}
+\subsection{Setting and definitions}
+Alphabets are finite, logarithms are to base $2$ and entropies are in bits. $H$ and $I$ denote Shannon entropy and mutual information \citep{cover2006}; $\Pr$ is probability.
+
+\begin{definition}[Semantic source]\label{def:source}
+A \emph{semantic source} is a pair of random variables $(W,X)$ with finite ranges $\mathcal W$ and $\mathcal X$ and a joint law $P$. $W$ is the \emph{meaning}, what is meant; $X$ is the \emph{form}, what is said.
+Both ranges are restricted to the support of their marginals.
+\end{definition}
+No function between $\mathcal X$ and $\mathcal W$ is assumed. The joint law is the language: $P(x\given w)$ says how meanings are said, and $P(w\given x)$ says how forms are understood.
+Synonymy is a meaning with more than one likely form, ambiguity a form with more than one likely meaning; both may be present.
+
+\begin{definition}[Ledger]\label{def:ledger}
+The \emph{ledger} of a semantic source has five entries.
+\begin{center}\small
+\begin{tabular}{@{}l l l l@{}}
+\toprule
+Name & Symbol & Definition & Reads as \\
+\midrule
+Content & $C$ & $H(W)$ & what is meant \\
+Expression & $E$ & $H(X)$ & what is said \\
+Latitude & $\Lat$ & $H(X\given W)$ & freedom of the speaker once the meaning is fixed \\
+Doubt & $\Dbt$ & $H(W\given X)$ & what the listener cannot recover from the form \\
+Conveyance & $I$ & $I(W;X)$ & what the form does convey \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{definition}
+Each entropy has a multiplicative reading in perplexity, the effective number of equally likely outcomes \citep{jelinek1977,hill1973}: $2^{\Lat}$ is the effective number of ways a meaning is said, $2^{\Dbt}$ the effective number of meanings a form is taken to have.
+
+\begin{theorem}[The ledger]\label{thm:ledger}
+For every semantic source:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $E=I+\Lat$, $\;C=I+\Dbt$, $\;H(W,X)=I+\Lat+\Dbt$;
+\item $E-C=\Lat-\Dbt$;
+\item $\Lat\ge0$, $\Dbt\ge0$, $0\le I\le\min\{C,E\}$;
+\item $\Dbt=0$ if and only if $W=\pi(X)$ almost surely for a function $\pi$; $\Lat=0$ if and only if $X=\xi(W)$ almost surely for a function $\xi$; $I=0$ if and only if $W$ and $X$ are independent;
+\item if $\Dbt=0$, then $E=C+\Lat$ with $C=H(\pi(X))$ and $\Lat=\sum_w\Pr(w)\,H(X\given W{=}w)$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(a) The chain rule gives $H(W,X)=H(W)+H(X\given W)=H(X)+H(W\given X)$, and $I=H(W)-H(W\given X)=H(X)-H(X\given W)$. Hence $E=I+\Lat$, $C=I+\Dbt$, and $H(W,X)=C+\Lat=I+\Dbt+\Lat$.
+(b) Subtract the first two identities of (a).
+(c) Conditional entropy and mutual information are non-negative; $I\le C$ because $\Dbt\ge0$ and $I\le E$ because $\Lat\ge0$.
+(d) $H(W\given X)=\sum_x\Pr(x)H(W\given X{=}x)$ vanishes iff every term does, iff each conditional law of $W$ is a point mass, iff $W$ is a function of $X$; the case of $\Lat$ is symmetric; $I=0$ is independence.
+(e) Set $\Dbt=0$ in (a); the formulas follow from the definitions.
+\end{proof}
+Parts (a)--(c) are the information diagram of two variables \citep{yeung1991}; part (e) is Shannon's grouping property \citep{shannon1948}. They are stated here because every later result is a reading of them.
+
+\begin{corollary}[Vocabulary law]\label{cor:vocab}
+If $X$ takes at most $N$ values, then $E\le\log N$, with equality iff $X$ is uniform, and
+\begin{equation}
+\Dbt-\Lat=C-E\ \ge\ C-\log N .
+\end{equation}
+In particular an unambiguous language ($\Dbt=0$) with content $C$ and latitude $\Lat$ uses an effective vocabulary $2^{E}=2^{C+\Lat}\le N$: each bit of freedom of expression doubles the number of forms the language needs. When the vocabulary is saturated ($E=\log N$), every additional bit of latitude is paid for by exactly one bit of doubt.
+\end{corollary}
+\begin{proof}
+$H(X)\le\log N$ with equality iff $X$ is uniform is the maximum-entropy property. The rest is \cref{thm:ledger}(b) and (e).
+\end{proof}
+
+\begin{proposition}[Distance between meaning and form]\label{prop:dist}
+$d(W,X)=\Lat+\Dbt=H(W,X)-I(W;X)$ is symmetric, non-negative, vanishes iff $W$ and $X$ are functions of each other, and satisfies $d(A,C)\le d(A,B)+d(B,C)$ for any three random variables on one probability space.
+\end{proposition}
+\begin{proof}
+$H(A\given C)\le H(A,B\given C)=H(B\given C)+H(A\given B,C)\le H(B\given C)+H(A\given B)$, and likewise with $A$ and $C$ exchanged; add the two inequalities.
+\end{proof}
+The quantity $H(A\given B)+H(B\given A)$ is Rokhlin's distance between partitions \citep{rokhlin1967} and the variation of information used to compare clusterings \citep{meila2007}. Here it measures how far a language is from a one-to-one correspondence between meanings and forms.
+
+\subsection{A lexicon}
+\cref{fig:ledger} shows a lexicon with three meanings and three forms. The form \emph{bank} carries three meanings, the meaning \emph{river edge} two forms. The joint entropy is $\ExJ$ bits. Content is $C=\ExC$ bits and expression $E=\ExE$ bits, so more is meant than is said. The balance $E-C=\Lat-\Dbt=\ExS-\ExD$ is negative because doubt ($\ExD$ bits) exceeds latitude ($\ExS$ bits). The form conveys $I=\ExI$ bits of the meaning. Nothing in the numbers depends on the words; a different assignment of the same probabilities gives the same ledger.
+\input{figures/fig_ledger}
+
+\subsection{The genetic code}
+The genetic code is the cleanest natural example, because its meaning map is a physical mechanism. A codon $X$ is translated by the ribosome into an amino acid or a stop signal $W$; the first assignment was deciphered by \citet{nirenberg1961}, and the pairing rules behind its many-to-one structure were described by the wobble hypothesis \citep{crick1966}. Each codon has one translation, so $\Dbt=0$ and \cref{thm:ledger}(e) applies: the entropy of the codon is the entropy of the protein plus the entropy of the synonymous choice. For the \emph{E.\,coli} K-12 genome (\cref{sec:measurements}) $C=\EcoC$ bits, $\Lat=\EcoS$ bits and $E=\EcoE$ bits per codon. The effective vocabulary is $2^{E}=\EcoEff$ of the $64$ codons, in agreement with \cref{cor:vocab}: a language that must be unambiguous and has this much freedom cannot use fewer forms. Sending the protein instead of the DNA saves $\EcoRho\,\%$ of the entropy.

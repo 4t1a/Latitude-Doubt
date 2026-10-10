@@ -1,0 +1,476 @@
+\begin{thebibliography}{69}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Antos and Kontoyiannis(2001)]{antos2001}
+Andr{\'a}s Antos and Ioannis Kontoyiannis.
+\newblock Convergence properties of functional estimates for discrete
+  distributions.
+\newblock \emph{Random Structures \& Algorithms}, 19\penalty0 (3--4):\penalty0
+  163--193, 2001.
+
+\bibitem[Arita and Ohashi(2004)]{arita2004}
+Masanori Arita and Yoshiyuki Ohashi.
+\newblock Secret signatures inside genomic {DNA}.
+\newblock \emph{Biotechnology Progress}, 20\penalty0 (5):\penalty0 1605--1607,
+  2004.
+
+\bibitem[Bao et~al.(2011)Bao, Basu, Dean, Partridge, Swami, Leland, and
+  Hendler]{bao2011}
+Jie Bao, Prithwish Basu, Mike Dean, Craig Partridge, Ananthram Swami, Will
+  Leland, and James~A. Hendler.
+\newblock Towards a theory of semantic communication.
+\newblock In \emph{Proceedings of the IEEE Network Science Workshop}, pages
+  110--117, 2011.
+
+\bibitem[Bar-Hillel and Carnap(1953)]{barhillel1953}
+Yehoshua Bar-Hillel and Rudolf Carnap.
+\newblock Semantic information.
+\newblock \emph{British Journal for the Philosophy of Science}, 4\penalty0
+  (14):\penalty0 147--157, 1953.
+\newblock \doi{10.1093/bjps/IV.14.147}.
+
+\bibitem[Bateson(1972)]{bateson1972}
+Gregory Bateson.
+\newblock \emph{Steps to an Ecology of Mind}.
+\newblock Chandler, San Francisco, 1972.
+
+\bibitem[Bird et~al.(2009)Bird, Klein, and Loper]{bird2009}
+Steven Bird, Ewan Klein, and Edward Loper.
+\newblock \emph{Natural Language Processing with {P}ython}.
+\newblock O'Reilly, Sebastopol, CA, 2009.
+
+\bibitem[Blackwell(1953)]{blackwell1953}
+David Blackwell.
+\newblock Equivalent comparisons of experiments.
+\newblock \emph{Annals of Mathematical Statistics}, 24\penalty0 (2):\penalty0
+  265--272, 1953.
+\newblock \doi{10.1214/aoms/1177729032}.
+
+\bibitem[Blattner et~al.(1997)]{blattner1997}
+Frederick~R. Blattner et~al.
+\newblock The complete genome sequence of {E}scherichia coli {K}-12.
+\newblock \emph{Science}, 277\penalty0 (5331):\penalty0 1453--1462, 1997.
+\newblock \doi{10.1126/science.277.5331.1453}.
+
+\bibitem[Bond and Foster(2013)]{bond2013}
+Francis Bond and Ryan Foster.
+\newblock Linking and extending an open multilingual wordnet.
+\newblock In \emph{Proceedings of the 51st Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 1352--1362,
+  2013.
+
+\bibitem[Cachin(1998)]{cachin1998}
+Christian Cachin.
+\newblock An information-theoretic model for steganography.
+\newblock In \emph{Information Hiding (IH 1998)}, volume 1525 of \emph{Lecture
+  Notes in Computer Science}, pages 306--318. Springer, 1998.
+\newblock \doi{10.1007/3-540-49380-8_21}.
+
+\bibitem[Chao and Shen(2003)]{chao2003}
+Anne Chao and Tsung-Jen Shen.
+\newblock Nonparametric estimation of {S}hannon's index of diversity when there
+  are unseen species in sample.
+\newblock \emph{Environmental and Ecological Statistics}, 10\penalty0
+  (4):\penalty0 429--443, 2003.
+\newblock \doi{10.1023/A:1026096204727}.
+
+\bibitem[Clelland et~al.(1999)Clelland, Risca, and Bancroft]{clelland1999}
+Catherine~Taylor Clelland, Viviana Risca, and Carter Bancroft.
+\newblock Hiding messages in {DNA} microdots.
+\newblock \emph{Nature}, 399:\penalty0 533--534, 1999.
+\newblock \doi{10.1038/21092}.
+
+\bibitem[Cock et~al.(2009)]{cock2009}
+Peter J.~A. Cock et~al.
+\newblock Biopython: freely available {P}ython tools for computational
+  molecular biology and bioinformatics.
+\newblock \emph{Bioinformatics}, 25\penalty0 (11):\penalty0 1422--1423, 2009.
+\newblock \doi{10.1093/bioinformatics/btp163}.
+
+\bibitem[Cover and Thomas(2006)]{cover2006}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley, Hoboken, NJ, 2nd edition, 2006.
+\newblock \doi{10.1002/047174882X}.
+
+\bibitem[Crick(1966)]{crick1966}
+Francis H.~C. Crick.
+\newblock Codon--anticodon pairing: the wobble hypothesis.
+\newblock \emph{Journal of Molecular Biology}, 19\penalty0 (2):\penalty0
+  548--555, 1966.
+\newblock \doi{10.1016/S0022-2836(66)80022-0}.
+
+\bibitem[Dayhoff et~al.(1978)Dayhoff, Schwartz, and Orcutt]{dayhoff1978}
+Margaret~O. Dayhoff, Robert~M. Schwartz, and Bruce~C. Orcutt.
+\newblock A model of evolutionary change in proteins.
+\newblock In \emph{Atlas of Protein Sequence and Structure}, volume 5, suppl.
+  3, pages 345--352. National Biomedical Research Foundation, Washington, DC,
+  1978.
+
+\bibitem[Dobrushin and Tsybakov(1962)]{dobrushin1962}
+Roland~L. Dobrushin and Boris~S. Tsybakov.
+\newblock Information transmission with additional noise.
+\newblock \emph{IRE Transactions on Information Theory}, 8\penalty0
+  (5):\penalty0 S293--S304, 1962.
+
+\bibitem[Farquhar et~al.(2024)Farquhar, Kossen, Kuhn, and Gal]{farquhar2024}
+Sebastian Farquhar, Jannik Kossen, Lorenz Kuhn, and Yarin Gal.
+\newblock Detecting hallucinations in large language models using semantic
+  entropy.
+\newblock \emph{Nature}, 630:\penalty0 625--630, 2024.
+\newblock \doi{10.1038/s41586-024-07421-0}.
+
+\bibitem[Fellbaum(1998)]{fellbaum1998}
+Christiane Fellbaum.
+\newblock \emph{{WordNet}: An Electronic Lexical Database}.
+\newblock MIT Press, Cambridge, MA, 1998.
+
+\bibitem[Ferrer~i Cancho and Sol{\'e}(2003)]{ferrer2003}
+Ramon Ferrer~i Cancho and Ricard~V. Sol{\'e}.
+\newblock Least effort and the origins of scaling in human language.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 100\penalty0
+  (3):\penalty0 788--791, 2003.
+\newblock \doi{10.1073/pnas.0335980100}.
+
+\bibitem[Firth(1957)]{firth1957}
+John~R. Firth.
+\newblock A synopsis of linguistic theory, 1930--1955.
+\newblock In \emph{Studies in Linguistic Analysis}, pages 1--32. Blackwell,
+  Oxford, 1957.
+
+\bibitem[Fisher(1922)]{fisher1922}
+Ronald~A. Fisher.
+\newblock On the mathematical foundations of theoretical statistics.
+\newblock \emph{Philosophical Transactions of the Royal Society A},
+  222:\penalty0 309--368, 1922.
+\newblock \doi{10.1098/rsta.1922.0009}.
+
+\bibitem[Floridi(2011)]{floridi2011}
+Luciano Floridi.
+\newblock \emph{The Philosophy of Information}.
+\newblock Oxford University Press, Oxford, 2011.
+
+\bibitem[Gibson et~al.(2019)Gibson, Futrell, Piantadosi, Dautriche, Mahowald,
+  Bergen, and Levy]{gibson2019}
+Edward Gibson, Richard Futrell, Steven~T. Piantadosi, Isabelle Dautriche, Kyle
+  Mahowald, Leon Bergen, and Roger Levy.
+\newblock How efficiency shapes human language.
+\newblock \emph{Trends in Cognitive Sciences}, 23\penalty0 (5):\penalty0
+  389--407, 2019.
+\newblock \doi{10.1016/j.tics.2019.02.003}.
+
+\bibitem[Goldreich et~al.(2012)Goldreich, Juba, and Sudan]{goldreich2012}
+Oded Goldreich, Brendan Juba, and Madhu Sudan.
+\newblock A theory of goal-oriented communication.
+\newblock \emph{Journal of the ACM}, 59\penalty0 (2):\penalty0 8, 2012.
+
+\bibitem[Gouy and Gautier(1982)]{gouy1982}
+Manolo Gouy and Christian Gautier.
+\newblock Codon usage in bacteria: correlation with gene expressivity.
+\newblock \emph{Nucleic Acids Research}, 10\penalty0 (22):\penalty0 7055--7074,
+  1982.
+\newblock \doi{10.1093/nar/10.22.7055}.
+
+\bibitem[G{\"u}nd{\"u}z et~al.(2023)G{\"u}nd{\"u}z, Qin, Aguerri, Dhillon,
+  Yang, Yener, Wong, and Chae]{gunduz2023}
+Deniz G{\"u}nd{\"u}z, Zhijin Qin, I{\~n}aki~Estella Aguerri, Harpreet~S.
+  Dhillon, Zhaohui Yang, Aylin Yener, Kai~Kit Wong, and Chan-Byoung Chae.
+\newblock Beyond transmitting bits: context, semantics, and task-oriented
+  communications.
+\newblock \emph{IEEE Journal on Selected Areas in Communications}, 41\penalty0
+  (1):\penalty0 5--41, 2023.
+\newblock \doi{10.1109/JSAC.2022.3223408}.
+
+\bibitem[Harris(1954)]{harris1954}
+Zellig~S. Harris.
+\newblock Distributional structure.
+\newblock \emph{Word}, 10\penalty0 (2--3):\penalty0 146--162, 1954.
+
+\bibitem[Hill(1973)]{hill1973}
+Mark~O. Hill.
+\newblock Diversity and evenness: a unifying notation and its consequences.
+\newblock \emph{Ecology}, 54\penalty0 (2):\penalty0 427--432, 1973.
+\newblock \doi{10.2307/1934352}.
+
+\bibitem[Hopper et~al.(2002)Hopper, Langford, and von Ahn]{hopper2002}
+Nicholas~J. Hopper, John Langford, and Luis von Ahn.
+\newblock Provably secure steganography.
+\newblock In \emph{Advances in Cryptology --- CRYPTO 2002}, volume 2442 of
+  \emph{Lecture Notes in Computer Science}, pages 77--92. Springer, 2002.
+\newblock \doi{10.1007/3-540-45708-9_6}.
+
+\bibitem[Huffman(1952)]{huffman1952}
+David~A. Huffman.
+\newblock A method for the construction of minimum-redundancy codes.
+\newblock \emph{Proceedings of the IRE}, 40\penalty0 (9):\penalty0 1098--1101,
+  1952.
+\newblock \doi{10.1109/JRPROC.1952.273898}.
+
+\bibitem[Jelinek et~al.(1977)Jelinek, Mercer, Bahl, and Baker]{jelinek1977}
+Frederick Jelinek, Robert~L. Mercer, Lalit~R. Bahl, and James~K. Baker.
+\newblock Perplexity---a measure of the difficulty of speech recognition tasks.
+\newblock \emph{Journal of the Acoustical Society of America}, 62\penalty0
+  (S1):\penalty0 S63, 1977.
+
+\bibitem[Juba et~al.(2011)Juba, Kalai, Khanna, and Sudan]{juba2011}
+Brendan Juba, Adam~Tauman Kalai, Sanjeev Khanna, and Madhu Sudan.
+\newblock Compression without a common prior: an information-theoretic
+  justification for ambiguity in language.
+\newblock In \emph{Proceedings of the 2nd Symposium on Innovations in Computer
+  Science (ICS)}, pages 79--86, 2011.
+
+\bibitem[Kimchi-Sarfaty et~al.(2007)Kimchi-Sarfaty, Oh, Kim, Sauna, Calcagno,
+  Ambudkar, and Gottesman]{kimchi2007}
+Chava Kimchi-Sarfaty, Jung~Mi Oh, In-Wha Kim, Zuben~E. Sauna, Anna~Maria
+  Calcagno, Suresh~V. Ambudkar, and Michael~M. Gottesman.
+\newblock A ``silent'' polymorphism in the {MDR1} gene changes substrate
+  specificity.
+\newblock \emph{Science}, 315\penalty0 (5811):\penalty0 525--528, 2007.
+\newblock \doi{10.1126/science.1135308}.
+
+\bibitem[Kolchinsky and Wolpert(2018)]{kolchinsky2018}
+Artemy Kolchinsky and David~H. Wolpert.
+\newblock Semantic information, autonomous agency and non-equilibrium
+  statistical physics.
+\newblock \emph{Interface Focus}, 8\penalty0 (6):\penalty0 20180041, 2018.
+\newblock \doi{10.1098/rsfs.2018.0041}.
+
+\bibitem[Kuhn et~al.(2023)Kuhn, Gal, and Farquhar]{kuhn2023}
+Lorenz Kuhn, Yarin Gal, and Sebastian Farquhar.
+\newblock Semantic uncertainty: linguistic invariances for uncertainty
+  estimation in natural language generation.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+\newblock arXiv:2302.09664.
+
+\bibitem[Liu et~al.(2021)Liu, Zhang, and Poor]{liu2021}
+Jiakun Liu, Wenyi Zhang, and H.~Vincent Poor.
+\newblock A rate-distortion framework for characterizing semantic information.
+\newblock In \emph{Proceedings of the IEEE International Symposium on
+  Information Theory (ISIT)}, 2021.
+\newblock \doi{10.1109/ISIT45174.2021.9518240}.
+
+\bibitem[Meil\u{a}(2007)]{meila2007}
+Marina Meil\u{a}.
+\newblock Comparing clusterings---an information based distance.
+\newblock \emph{Journal of Multivariate Analysis}, 98\penalty0 (5):\penalty0
+  873--895, 2007.
+\newblock \doi{10.1016/j.jmva.2006.11.013}.
+
+\bibitem[Miller(1955)]{miller1955}
+George~A. Miller.
+\newblock Note on the bias of information estimates.
+\newblock In Henry Quastler, editor, \emph{Information Theory in Psychology:
+  Problems and Methods}, pages 95--100. Free Press, Glencoe, IL, 1955.
+
+\bibitem[Miller(1995)]{miller1995}
+George~A. Miller.
+\newblock {WordNet}: a lexical database for {E}nglish.
+\newblock \emph{Communications of the ACM}, 38\penalty0 (11):\penalty0 39--41,
+  1995.
+\newblock \doi{10.1145/219717.219748}.
+
+\bibitem[Miller et~al.(1993)Miller, Leacock, Tengi, and Bunker]{miller1993}
+George~A. Miller, Claudia Leacock, Randee Tengi, and Ross~T. Bunker.
+\newblock A semantic concordance.
+\newblock In \emph{Proceedings of the Workshop on Human Language Technology
+  (HLT '93)}, pages 303--308, 1993.
+\newblock \doi{10.3115/1075671.1075742}.
+
+\bibitem[Muto and Osawa(1987)]{muto1987}
+Akira Muto and Syozo Osawa.
+\newblock The guanine and cytosine content of genomic {DNA} and bacterial
+  evolution.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 84\penalty0
+  (1):\penalty0 166--169, 1987.
+\newblock \doi{10.1073/pnas.84.1.166}.
+
+\bibitem[Nirenberg and Matthaei(1961)]{nirenberg1961}
+Marshall~W. Nirenberg and J.~Heinrich Matthaei.
+\newblock The dependence of cell-free protein synthesis in {E}. {C}oli upon
+  naturally occurring or synthetic polyribonucleotides.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 47\penalty0
+  (10):\penalty0 1588--1602, 1961.
+\newblock \doi{10.1073/pnas.47.10.1588}.
+
+\bibitem[Paninski(2003)]{paninski2003}
+Liam Paninski.
+\newblock Estimation of entropy and mutual information.
+\newblock \emph{Neural Computation}, 15\penalty0 (6):\penalty0 1191--1253,
+  2003.
+\newblock \doi{10.1162/089976603321780272}.
+
+\bibitem[Pereira et~al.(1993)Pereira, Tishby, and Lee]{pereira1993}
+Fernando Pereira, Naftali Tishby, and Lillian Lee.
+\newblock Distributional clustering of {E}nglish words.
+\newblock In \emph{Proceedings of the 31st Annual Meeting of the Association
+  for Computational Linguistics}, pages 183--190, 1993.
+\newblock \doi{10.3115/981574.981598}.
+
+\bibitem[Piantadosi et~al.(2012)Piantadosi, Tily, and Gibson]{piantadosi2012}
+Steven~T. Piantadosi, Harry Tily, and Edward Gibson.
+\newblock The communicative function of ambiguity in language.
+\newblock \emph{Cognition}, 122\penalty0 (3):\penalty0 280--291, 2012.
+\newblock \doi{10.1016/j.cognition.2011.10.004}.
+
+\bibitem[Plotkin and Kudla(2011)]{plotkin2011}
+Joshua~B. Plotkin and Grzegorz Kudla.
+\newblock Synonymous but not the same: the causes and consequences of codon
+  bias.
+\newblock \emph{Nature Reviews Genetics}, 12\penalty0 (1):\penalty0 32--42,
+  2011.
+\newblock \doi{10.1038/nrg2899}.
+
+\bibitem[Rokhlin(1967)]{rokhlin1967}
+Vladimir~A. Rokhlin.
+\newblock Lectures on the entropy theory of measure-preserving transformations.
+\newblock \emph{Russian Mathematical Surveys}, 22\penalty0 (5):\penalty0 1--52,
+  1967.
+\newblock \doi{10.1070/RM1967v022n05ABEH001224}.
+
+\bibitem[Schroeder~de Witt et~al.(2023)Schroeder~de Witt, Sokota, Kolter,
+  Foerster, and Strohmeier]{dewitt2023}
+Christian Schroeder~de Witt, Samuel Sokota, J.~Zico Kolter, Jakob Foerster, and
+  Martin Strohmeier.
+\newblock Perfectly secure steganography using minimum entropy coupling.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+\newblock arXiv:2210.14889.
+
+\bibitem[Shalizi and Crutchfield(2001)]{shalizi2001}
+Cosma~R. Shalizi and James~P. Crutchfield.
+\newblock Computational mechanics: pattern and prediction, structure and
+  simplicity.
+\newblock \emph{Journal of Statistical Physics}, 104\penalty0 (3--4):\penalty0
+  817--879, 2001.
+\newblock \doi{10.1023/A:1010388907793}.
+
+\bibitem[Shannon(1948)]{shannon1948}
+Claude~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27\penalty0 (3--4):\penalty0
+  379--423, 623--656, 1948.
+\newblock \doi{10.1002/j.1538-7305.1948.tb01338.x}.
+
+\bibitem[Sharp and Li(1987)]{sharp1987}
+Paul~M. Sharp and Wen-Hsiung Li.
+\newblock The codon adaptation index---a measure of directional synonymous
+  codon usage bias, and its potential applications.
+\newblock \emph{Nucleic Acids Research}, 15\penalty0 (3):\penalty0 1281--1295,
+  1987.
+\newblock \doi{10.1093/nar/15.3.1281}.
+
+\bibitem[Silva(2018)]{silva2018}
+Jorge~F. Silva.
+\newblock Shannon entropy estimation in {$\infty$}-alphabets from convergence
+  results: studying plug-in estimators.
+\newblock \emph{Entropy}, 20\penalty0 (6):\penalty0 397, 2018.
+\newblock \doi{10.3390/e20060397}.
+
+\bibitem[Sueoka(1962)]{sueoka1962}
+Noboru Sueoka.
+\newblock On the genetic basis of variation and heterogeneity of {DNA} base
+  composition.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 48\penalty0
+  (4):\penalty0 582--592, 1962.
+\newblock \doi{10.1073/pnas.48.4.582}.
+
+\bibitem[Tishby et~al.(2000)Tishby, Pereira, and Bialek]{tishby2000}
+Naftali Tishby, Fernando~C. Pereira, and William Bialek.
+\newblock The information bottleneck method.
+\newblock arXiv:physics/0004057, 2000.
+
+\bibitem[Weaver(1949)]{weaver1949}
+Warren Weaver.
+\newblock Recent contributions to the mathematical theory of communication.
+\newblock In Claude~E. Shannon and Warren Weaver, editors, \emph{The
+  Mathematical Theory of Communication}, pages 1--28. University of Illinois
+  Press, Urbana, 1949.
+
+\bibitem[Weissman et~al.(2003)Weissman, Ordentlich, Seroussi, Verd{\'u}, and
+  Weinberger]{weissman2003}
+Tsachy Weissman, Erik Ordentlich, Gadiel Seroussi, Sergio Verd{\'u}, and
+  Marcelo~J. Weinberger.
+\newblock Inequalities for the {$L_1$} deviation of the empirical distribution.
+\newblock Technical Report HPL-2003-97 (R.1), Hewlett-Packard Laboratories,
+  2003.
+
+\bibitem[Witsenhausen(1980)]{witsenhausen1980}
+Hans~S. Witsenhausen.
+\newblock Indirect rate distortion problems.
+\newblock \emph{IEEE Transactions on Information Theory}, 26\penalty0
+  (5):\penalty0 518--521, 1980.
+
+\bibitem[Wittgenstein(1953)]{wittgenstein1953}
+Ludwig Wittgenstein.
+\newblock \emph{Philosophical Investigations}.
+\newblock Blackwell, Oxford, 1953.
+
+\bibitem[Wolf and Ziv(1970)]{wolf1970}
+Jack~K. Wolf and Jacob Ziv.
+\newblock Transmission of noisy information to a noisy receiver with minimum
+  distortion.
+\newblock \emph{IEEE Transactions on Information Theory}, 16\penalty0
+  (4):\penalty0 406--411, 1970.
+
+\bibitem[Wright(1990)]{wright1990}
+Frank Wright.
+\newblock The `effective number of codons' used in a gene.
+\newblock \emph{Gene}, 87\penalty0 (1):\penalty0 23--29, 1990.
+\newblock \doi{10.1016/0378-1119(90)90491-9}.
+
+\bibitem[Wu and Yang(2016)]{wu2016}
+Yihong Wu and Pengkun Yang.
+\newblock Minimax rates of entropy estimation on large alphabets via best
+  polynomial approximation.
+\newblock \emph{IEEE Transactions on Information Theory}, 62\penalty0
+  (6):\penalty0 3702--3720, 2016.
+
+\bibitem[Yeung(1991)]{yeung1991}
+Raymond~W. Yeung.
+\newblock A new outlook on {S}hannon's information measures.
+\newblock \emph{IEEE Transactions on Information Theory}, 37:\penalty0
+  466--474, 1991.
+
+\bibitem[Yockey(1992)]{yockey1992}
+Hubert~P. Yockey.
+\newblock \emph{Information Theory and Molecular Biology}.
+\newblock Cambridge University Press, Cambridge, 1992.
+
+\bibitem[Zaslavsky et~al.(2018)Zaslavsky, Kemp, Regier, and
+  Tishby]{zaslavsky2018}
+Noga Zaslavsky, Charles Kemp, Terry Regier, and Naftali Tishby.
+\newblock Efficient compression in color naming and its evolution.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 115\penalty0
+  (31):\penalty0 7937--7942, 2018.
+\newblock \doi{10.1073/pnas.1800521115}.
+
+\bibitem[Zeeberg(2002)]{zeeberg2002}
+Barry Zeeberg.
+\newblock Shannon information theoretic computation of synonymous codon usage
+  biases in coding regions of human and mouse genomes.
+\newblock \emph{Genome Research}, 12\penalty0 (6):\penalty0 944--955, 2002.
+\newblock \doi{10.1101/gr.213402}.
+
+\bibitem[Ziegler et~al.(2019)Ziegler, Deng, and Rush]{ziegler2019}
+Zachary Ziegler, Yuntian Deng, and Alexander Rush.
+\newblock Neural linguistic steganography.
+\newblock In \emph{Proceedings of EMNLP-IJCNLP 2019}, pages 1210--1215, 2019.
+\newblock \doi{10.18653/v1/D19-1115}.
+
+\bibitem[Zipf(1945)]{zipf1945}
+George~K. Zipf.
+\newblock The meaning-frequency relationship of words.
+\newblock \emph{Journal of General Psychology}, 33\penalty0 (2):\penalty0
+  251--256, 1945.
+
+\bibitem[Zipf(1949)]{zipf1949}
+George~K. Zipf.
+\newblock \emph{Human Behavior and the Principle of Least Effort}.
+\newblock Addison-Wesley, Cambridge, MA, 1949.
+
+\end{thebibliography}

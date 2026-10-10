@@ -1,0 +1,27 @@
+{
+ "ledger": {
+  "instances": 100000,
+  "max_abs_err_partition": 8.881784197001252e-16,
+  "max_abs_err_balance": 4.440892098500626e-16,
+  "min_term": -8.881784197001252e-16,
+  "vocab_bound_violations": 0,
+  "huffman_instances": 3000,
+  "huffman_excess_min": 8.531177503323661e-07,
+  "huffman_excess_max": 1.0000000000000002
+ },
+ "derived_meaning": {
+  "instances": 600,
+  "sufficiency_max_err": 1.7763568394002505e-15,
+  "sufficient_partitions_seen": 4119,
+  "minimality_holds": 4119,
+  "min_strict_loss_on_merging_distinct_meanings": 5.353430116983304e-07,
+  "monotonicity_cases": 404,
+  "monotonicity_holds": 404
+ },
+ "leakage": {
+  "instances": 5000,
+  "err_function_case": 2.6645352591003757e-15,
+  "err_depth_identity": 3.552713678800501e-15,
+  "err_purpose_identity": 1.1102230246251565e-15
+ }
+}

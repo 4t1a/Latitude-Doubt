@@ -1,0 +1,19 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\definecolor{lvlA}{HTML}{2B5C8A}\definecolor{lvlB}{HTML}{6E9BC5}
+\begin{axis}[xbar stacked,width=0.80\textwidth,height=6.3cm,bar width=11pt,xmin=0,xmax=7.9,xtick={0,1,2,3,4,5,6},
+  xlabel={entropy of the codon, bits},symbolic y coords={E. coli K-12,S. aureus NCTC 8325,S. argenteus,S. agnetis,C. simulans PES1,A. thaliana plastid},
+  ytick=data,y dir=reverse,ytick style={draw=none},ymajorgrids=false,enlarge y limits=0.11,
+  legend style={at={(0.5,1.05)},anchor=south,legend columns=-1,/tikz/every even column/.append style={column sep=5pt}},
+  nodes near coords align={horizontal}]
+\addplot[fill=lvlA,draw=none] table[x=Hclass,y=name,col sep=comma]{data/genomes_bars.csv};
+\addplot[fill=lvlB,draw=none] table[x=Haa_class,y=name,col sep=comma]{data/genomes_bars.csv};
+\addplot[fill=form,draw=none] table[x=S,y=name,col sep=comma]{data/genomes_bars.csv};
+\input{tables/genome_labels.tex}
+\legend{class $H(G)$,amino acid within class $H(W\!\mid\! G)$,latitude $\Lat=H(X\!\mid\! W)$}
+\end{axis}
+\end{tikzpicture}
+\caption{The entropy of the codon in six genomes, split over three levels of meaning: the chemical class of the amino acid (Dayhoff groups and stop), the amino acid within its class, and the synonymous codon within its amino acid (latitude). The label at the end of each bar gives latitude in bits and as a share of $E=H(X)$.}
+\label{fig:genomes}
+\end{figure}

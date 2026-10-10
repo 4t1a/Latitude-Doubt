@@ -1,0 +1,77 @@
+\section{What the terms cost and buy}\label{sec:operational}
+\subsection{The price of saying}
+Let $(W_i,X_i)$, $i=1,\dots,n$, be independent copies of a semantic source. A speaker who holds $W^n$ can send it directly, or can send the forms $X^n$ and then whatever the listener still needs to fix $W^n$. Both are lossless descriptions of the meaning. Their costs differ by exactly the latitude.
+\begin{theorem}[The price of saying]\label{thm:price}
+Let $\ell_W$, $\ell_X$ and $\ell_{W\mid X}$ be the smallest expected lengths, in bits, of a prefix code for $W^n$, of a prefix code for $X^n$, and of a prefix code for $W^n$ that may depend on $x^n$. Then
+\begin{equation}
+nC\le\ell_W<nC+1,\qquad nE\le\ell_X<nE+1,\qquad n\Dbt\le\ell_{W\mid X}<n\Dbt+1 .
+\end{equation}
+Sending $X^n$ and then resolving the meaning therefore costs between $n(E+\Dbt)$ and $n(E+\Dbt)+2$ bits, which is
+\begin{equation}
+n(E+\Dbt)=nC+n\Lat .
+\end{equation}
+Saying instead of meaning costs $n\Lat$ bits, up to two, whatever the doubt.
+\end{theorem}
+\begin{proof}
+For a random variable $Z$ the expected length of an optimal prefix code lies in $[H(Z),H(Z)+1)$ \citep{cover2006,huffman1952}. Apply this to $Z=W^n$, to $Z=X^n$, and, for each $x^n$, to the conditional law of $W^n$ given $X^n=x^n$; averaging over $x^n$ gives a length in $[H(W^n\given X^n),H(W^n\given X^n)+1)$. Independence gives $H(W^n)=nC$, $H(X^n)=nE$ and $H(W^n\given X^n)=n\Dbt$. The identity $E+\Dbt=C+\Lat$ is \cref{thm:ledger}.
+\end{proof}
+The doubt has its own operational reading. A listener who has heard $x$ and asks yes/no questions of an oracle to fix the meaning needs, by an optimal question tree, between $H(W\given X{=}x)$ and $H(W\given X{=}x)+1$ questions on average; averaged over forms this is between $\Dbt$ and $\Dbt+1$. Doubt is the price of clarification, and latitude is the price of wording. When $\Dbt=0$, as in the genetic code, saying instead of meaning costs $n\Lat$ and nothing is gained by asking.
+
+\subsection{Latitude is a channel}\label{sec:channel}
+Latitude is what the speaker may choose without changing the meaning. It can carry a second message. The question is how much, if the text must still mean the same thing and must still look like text. We answer first in an idealized model, with its assumptions stated, and then treat the finite-precision implementation separately (\cref{prop:finite}).
+
+\paragraph{The idealized model.} Let $(W_i,X_i)$ be independent copies of a source with $\Dbt=0$, so $W=\pi(X)$ and $Q(x^n\given w^n)=\prod_iP(x_i\given w_i)$ is the \emph{cover law}. A \emph{$k$-bit embedding scheme} has a key $R$ shared with the receiver, a hidden message $B$ uniform on $\{0,1\}^k$, and private randomness of the sender. The encoder maps $(w^n,B,R,\text{randomness})$ to a form sequence $\tilde X^n$ such that
+(i) $\pi^n(\tilde X^n)=w^n$ (the meaning is preserved) and
+(ii) for every $w^n$ and every message the law of $\tilde X^n$ is exactly $Q(\cdot\given w^n)$ (the text is indistinguishable from the cover law).
+The decoder outputs $\hat B$ from $(\tilde X^n,R)$, or reports failure; failure counts as an error below, with probability $\delta$. The assumptions are these.
+\begin{enumerate}[label=(A\arabic*)]
+\item The cover law $Q$ is known exactly to the sender and to the receiver.
+\item The meaning sequence $w^n$ is fixed by the source, not by the hidden message, and the receiver computes it from the text; this is where $\Dbt=0$ is used.
+\item The key $R$ is uniform on $[0,1)$, secret, used once, and independent of the message, the meaning sequence and the sender's randomness.
+\item Real numbers and exact arithmetic are available.
+\end{enumerate}
+Security here means (ii): against an observer who knows $Q$ and does not know $R$, the text has exactly the law of an unmarked text. It is relative to $Q$; an observer with a better model of natural text is outside the guarantee. If the message is itself uniformly random, for instance a ciphertext, (ii) holds without a secret key, and $R$ only randomizes the alignment on which the failure probability below is computed; it may then be public, and the failure probability is an average over $R$.
+
+\begin{theorem}[Latitude is a channel]\label{thm:channel}
+Under (A1)--(A4):
+\emph{Converse.} Every scheme satisfying (i) and (ii) obeys $(1-\delta)k\le n\Lat+1$ when the meanings $W_i$ are drawn from the source, and $(1-\delta)k\le\sum_iH(X\given W{=}w_i)+1$ for a fixed meaning sequence $w^n$.
+\emph{Achievability.} For a fixed $w^n$ put $\mu=\sum_iH(X\given w_i)$ and $\sigma^2=\sum_i\operatorname{Var}[-\log P(X\given w_i)]$. For every integer $k\ge0$ the scheme given below satisfies (i) and (ii); its decoder either outputs the hidden message or reports failure, and never outputs a wrong message; and its failure probability is
+\begin{align}
+\delta&=\sum_{x^n}Q(x^n\given w^n)\,\min\{1,\,2^{k}Q(x^n\given w^n)\},\\
+\delta&\le\Pr\bigl[-\log Q(X^n\given w^n)\le k+s\bigr]+2^{-s}\qquad\text{for every }s\ge0 .
+\end{align}
+With $k=\lfloor\mu-a\rfloor-s$ Chebyshev's inequality gives $\delta\le\sigma^2/a^2+2^{-s}$; taking $a=n^{3/4}$ and $s=\lceil\log n\rceil$, the rate $k/n$ tends to $\Lat$ and $\delta\to0$. In words: \emph{the capacity of the free channel inside a message is its latitude.}
+\end{theorem}
+\begin{proof}[Proof of the converse]
+$B$ is independent of $(W^n,R)$, so $k=H(B\given W^n)$. Write $k=I(B;\tilde X^n,R\given W^n)+H(B\given\tilde X^n,R,W^n)$. Since $\hat B$ is a function of $(\tilde X^n,R)$, Fano's inequality gives $H(B\given\tilde X^n,R,W^n)\le1+\delta k$ ($W^n$ is a function of $\tilde X^n$). Next $I(B;\tilde X^n,R\given W^n)=I(B;R\given W^n)+I(B;\tilde X^n\given R,W^n)=0+I(B;\tilde X^n\given R,W^n)\le H(\tilde X^n\given W^n)$. By (ii), $H(\tilde X^n\given W^n{=}w^n)=\sum_iH(X\given w_i)$; averaging over $W^n$ gives $n\Lat$. Combine.
+\end{proof}
+\begin{proof}[Proof of achievability]
+\emph{Scheme.} Fix a total order on $\mathcal X^n$ and let $I(x^n)=[F(x^n),F(x^n)+Q(x^n\given w^n))\subset[0,1)$ be its interval in the cumulative distribution of the cover law. Given the message $m\in\{0,\dots,2^k-1\}$, draw $V$ uniform on $[0,1)$ and put $z=(m+V)2^{-k}$ and $U=(z+R)\bmod1$. The stego sequence $\tilde X^n$ is the $x^n$ with $U\in I(x^n)$.
+\emph{Security.} $R$ is uniform and independent of $z$, so $U$ is uniform, whence $\Pr[\tilde X^n=x^n]=Q(x^n\given w^n)$ for every $m$. Property (ii) holds exactly; (i) holds because $\tilde X^n$ is drawn from the cover law given $w^n$.
+\emph{Decoding.} The receiver knows $w^n$ (it is $\pi^n(\tilde X^n)$), $R$, and hence the interval $I=I(\tilde X^n)$ of width $q=Q(\tilde X^n\given w^n)$ that contains $U$. It forms the arc $A=\{(u-R)\bmod1:u\in I\}$, which contains $z=(U-R)\bmod1$. If $A$ lies inside one cell $[j2^{-k},(j+1)2^{-k})$ it outputs $j$, which then equals $m$ because $z$ lies in the cell of $m$; otherwise it reports failure. A wrong message is never output.
+\emph{Failure probability.} Given $\tilde X^n$, $U$ is uniform on $I$; write $U=a+\rho q$ with $\rho$ uniform on $[0,1)$ and independent of $V$. Then $A=[z-\rho q,\,z+(1-\rho)q)$. In units of the cell width, $z$ sits at position $V$, so $A$ fits in the cell iff $\rho t\le V\le1-(1-\rho)t$ with $t=2^kq$, which has probability $(1-t)^+$ for every $\rho$. Hence the failure probability given $\tilde X^n$ is $\min\{1,2^kq\}$, and averaging over $\tilde X^n\sim Q$ gives the stated $\delta$.
+\emph{Bound.} If $q\ge2^{-k-s}$ bound $\min\{1,2^kq\}$ by $1$; otherwise by $2^kq<2^{-s}$. This yields the inequality. For the Chebyshev step, $-\log Q(X^n\given w^n)$ is a sum of independent terms with mean $\mu$ and variance $\sigma^2$, and $k+s\le\mu-a$. Finally $\sigma^2=O(n)$, so $\sigma^2/n^{3/2}\to0$, and $\mu=n\Lat+O(\sqrt n)$ for typical meaning sequences, so $k/n\to\Lat$.
+\end{proof}
+
+\paragraph{Finite precision.} A computer has neither real numbers nor a perfectly uniform key. The next result separates the idealized theorem from an implementation with exact rational arithmetic and a key of $P$ bits.
+\begin{proposition}[Finite precision]\label{prop:finite}
+Replace $R$ and $V$ by independent variables uniform on the grid $G_P=\{j2^{-P}:0\le j<2^P\}$, keep all arithmetic exact, and let $q_{\min}=\min_{x^n}Q(x^n\given w^n)$. For every message $m$:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item the decoder outputs $m$ or reports failure, as before;
+\item $\bigl|\Pr[\tilde X^n=x^n]-Q(x^n\given w^n)\bigr|\le2^{-P}$ for every $x^n$; so if $P\ge\log(1/q_{\min})+s+1$, the total variation distance between the law of $\tilde X^n$ and $Q(\cdot\given w^n)$ is at most $2^{-s-2}$;
+\item under the same condition, the failure probability $\delta_P$ differs from the idealized $\delta$ of \cref{thm:channel} by at most $2^{-s}+2^{k+1-P}$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(a) The decoding argument of \cref{thm:channel} used only $U\in I$ and $z=(U-R)\bmod1$, both exact here.
+(b) For fixed $(m,V)$, $U=(z+R)\bmod1$ is uniform on the $2^P$ points of a translate of $G_P$. An interval of width $q$ contains $\lfloor q2^P\rfloor$ or $\lceil q2^P\rceil$ of them, so $\Pr[\tilde X^n=x^n\given m,V]$ is within $2^{-P}$ of $q(x^n)=Q(x^n\given w^n)$, and so is the average over $V$. If $P\ge\log(1/q_{\min})+s+1$ then $q(x^n)\ge2^{s+1-P}$ for every $x^n$, so the relative error is at most $2^{-s-1}$ and the total variation distance is at most $\tfrac12\cdot2^{-s-1}=2^{-s-2}$.
+(c) Couple the two schemes by drawing $(R',V')$ uniform on $[0,1)^2$ and setting $R=2^{-P}\lfloor2^PR'\rfloor$, $V=2^{-P}\lfloor2^PV'\rfloor$; the primed variables drive the idealized scheme. Then $U'-U\in[0,w)$ modulo $1$ with $w=2^{1-P}$. The two texts differ only if the left endpoint of an interval lies within $w$ below $U'$, which has probability $\sum_x\min\{q(x),w\}\le w/q_{\min}\le2^{-s}$. If the texts agree, the two arcs differ by a shift $d<2^{-P}$, and the outcomes differ only if a cell boundary falls in one of the two windows of length $d$ that follow the endpoints of the idealized arc. Each endpoint is $z'$ plus a variable independent of $z'$, and $z'$ is uniform on a cell, so each endpoint is uniform modulo the cell width $2^{-k}$ and the probability of a boundary in a window of length $d$ is $2^kd$. Hence $|\delta_P-\delta|\le2^{-s}+2^{k+1}d<2^{-s}+2^{k+1-P}$.
+\end{proof}
+So the implementation is exact in the sense of (a), exact to within $2^{-s-2}$ in total variation by (b), and its failure probability is that of the idealized scheme to within $2^{-s}+2^{k+1-P}$. The price is a key of $P\ge\log(1/q_{\min})+s+1$ bits, which can exceed the payload several times over (\cref{sec:embedding}); it comes from asking for an exact guarantee on every sequence, including the least probable. The converse is stated for exact security. For a scheme that is secure only up to total variation $\varepsilon$, the same argument bounds $k$ by $H(\tilde X^n\given W^n)+1$, which differs from $n\Lat$ by an amount that vanishes with $\varepsilon$ by the continuity of entropy; we do not need this refinement.
+
+\paragraph{What the guarantee covers.} The converse holds for every scheme obeying (i) and (ii), whatever the model; the achievability is for the cover law $Q$ only. If the process that generates natural texts is richer than $Q$, an observer who knows the richer model can tell an embedded text from a natural one. \cref{sec:embedding} shows this for real genes: natural genes are overdispersed relative to the genome-wide synonymous law, and embedded genes are not. The scheme is the arithmetic-decoding construction used in provably secure steganography \citep{cachin1998,hopper2002,ziegler2019,dewitt2023}; what the theorem adds is the statement of the capacity in the ledger's terms, the exact failure probability, and the identification of what limits it: $\Lat$, and nothing else.
+
+\paragraph{Scope of ``meaning-preserving''.} Condition (i) holds under the meaning map $\pi$ of the source. In the genetic code $\pi$ is translation, and the embedding is \emph{protein-preserving}: the amino-acid sequence is unchanged. It is not claimed to be biologically neutral. Synonymous codons differ in translation speed, in mRNA structure and in their effects on expression and folding, and synonymous changes can alter protein function \citep{plotkin2011,kimchi2007}. For such purposes the meaning of a codon is finer than its amino acid (\cref{thm:derived}(d)), the latitude relative to it is smaller, and the capacity of the channel falls to that smaller latitude. Biological instances of the idea are old: messages have been written into DNA \citep{clelland1999} and into the synonymous codons of genes \citep{arita2004}.
+
+\subsection{Lossy meaning}\label{sec:lossy}
+If the receiver tolerates errors in meaning, the problem is one of \emph{indirect} rate--distortion coding: reproduce a function of the source under a distortion measure that sees only that function. It was solved by \citet{dobrushin1962}, \citet{wolf1970} and \citet{witsenhausen1980}; the reduction to an ordinary rate--distortion problem with the distortion averaged over the belief, and its use for semantic sources \citep{liu2021}, need no change here. The ledger adds nothing to that theory and we do not repeat it.

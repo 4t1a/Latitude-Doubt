@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this research, code, or datasets, please cite it as below."
+title: "Latitude and Doubt: An exact ledger of meaning in messages"
+abstract: "Shannon set the meaning of messages aside as irrelevant to the engineering problem. This paper restores it as bookkeeping. For a source that pairs what is meant, W, with what is said, X, the joint entropy divides exactly into three non-negative parts: the information the form conveys, I(W;X); the latitude Lat = H(X|W), which the speaker remains free to choose once the meaning is fixed; and the doubt Dbt = H(W|X), which the listener cannot recover from the form."
+authors:
+  - family-names: "Atta"
+    given-names: "Moustafa Mahmoud"
+    orcid: "https://orcid.org/0009-0008-6724-4698"
+    affiliation: "Independent Research"
+    email: "m.m.atta@outlook.com"
+version: "1.0.0"
+date-released: "2026-09-29"
+repository-code: "https://github.com/4t1a/Latitude-Doubt"
+keywords:
+  - "semantic information"
+  - "entropy"
+  - "synonymy"
+  - "ambiguity"
+  - "sufficiency"
+  - "leakage"
+  - "genetic code"
+  - "steganography"
+license: "MIT"

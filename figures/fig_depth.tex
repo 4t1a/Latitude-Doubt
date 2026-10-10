@@ -1,0 +1,26 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize\sffamily]
+  \definecolor{lvlA}{HTML}{2B5C8A}\definecolor{lvlB}{HTML}{6E9BC5}
+  \node[anchor=west,font=\footnotesize\sffamily\bfseries] at (0.2,1.55) {Two ledgers on the same three levels of meaning\enspace\normalfont\scriptsize(not to scale)};
+  % column headers: the levels
+  \foreach \x/\t in {4.2/{level 2}, 6.8/{level 1}, 8.95/{level 0}}{
+    \node[anchor=south,align=center,text=mute,font=\scriptsize\sffamily] at (\x,0.42) {\t};
+  }
+  % row 1: entropy of the form
+  \node[anchor=east,align=right,text=mute] at (2.55,0) {entropy\\of the form};
+  \fill[lvlA] (2.8,-0.3) rectangle (5.6,0.3);\fill[lvlB] (5.6,-0.3) rectangle (8.0,0.3);\fill[form] (8.0,-0.3) rectangle (9.9,0.3);
+  \draw[white,line width=0.8pt] (5.6,-0.3) -- (5.6,0.3) (8.0,-0.3) -- (8.0,0.3);
+  \node[text=white] at (4.2,0) {$H(W_2)$};\node[text=white] at (6.8,0) {$H(W_1\!\mid\! W_2)$};\node[text=ink] at (8.95,0) {$H(X\!\mid\! W_1)$};
+  \node[anchor=west,text=mute] at (10.05,0) {$=H(X)$};
+  % row 2: information about a purpose Y
+  \node[anchor=east,align=right,text=mute] at (2.55,-1.5) {information\\about $Y$};
+  \fill[lvlA] (2.8,-1.8) rectangle (4.4,-1.2);\fill[lvlB] (4.4,-1.8) rectangle (6.7,-1.2);\fill[leak] (6.7,-1.8) rectangle (9.9,-1.2);
+  \draw[white,line width=0.8pt] (4.4,-1.8) -- (4.4,-1.2) (6.7,-1.8) -- (6.7,-1.2);
+  \node[text=white,font=\scriptsize\sffamily] at (3.6,-1.5) {$I(W_2;Y)$};\node[text=white,font=\scriptsize\sffamily] at (5.55,-1.5) {$I(W_1;Y\!\mid\! W_2)$};
+  \node[text=white,align=center,font=\scriptsize\sffamily] at (8.3,-1.5) {leakage $\Lk_Y(W_1)$\\$=I(X;Y\!\mid\! W_1)$};
+  \node[anchor=west,text=mute] at (10.05,-1.5) {$=I(X;Y)$};
+\end{tikzpicture}
+\caption{Depth. If $W_1=f(X)$ and $W_2=g(W_1)$ are successively coarser meanings, the entropy of the form is a sum with one term per level (\cref{prop:depth}); the information the form carries about a purpose $Y$ splits over the same levels, and its finest-level term, drawn at the right, is the leakage of $W_1$ (the $k=1$ term of the sum). The two bars have different scales.}
+\label{fig:depth}
+\end{figure}

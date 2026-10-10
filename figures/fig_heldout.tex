@@ -1,0 +1,14 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.74\textwidth,height=5.6cm,xmode=log,xmin=55,xmax=800,ymin=0.3,ymax=0.98,xtick={70,150,300,550},xticklabels={{$<$100},{100--199},{200--399},{$\geq$400}},
+  xlabel={gene length, codons},ylabel={macro-averaged recall},legend style={at={(0.03,0.97)},anchor=north west,legend columns=1,draw=none,fill=white,fill opacity=0.85,text opacity=1}]
+\addplot[color=meaning,thick,mark=*,mark size=2pt] table[x=mid,y=codon,col sep=comma]{data/heldout_accuracy.csv};
+\addplot[color=form,thick,mark=square*,mark size=2pt,dashed] table[x=mid,y=silent,col sep=comma]{data/heldout_accuracy.csv};
+\addplot[color=mute,thick,mark=triangle*,mark size=2.4pt] table[x=mid,y=aa,col sep=comma]{data/heldout_accuracy.csv};
+\legend{codons,synonymous choice only,amino acids only}
+\end{axis}
+\end{tikzpicture}
+\caption{Held-out identification of the genome of a gene, by the evidence used, against gene length. Six classes; chance is $1/6\approx0.17$. The synonymous choice alone almost matches the full codon sequence; the protein alone falls far short.}
+\label{fig:heldout}
+\end{figure}

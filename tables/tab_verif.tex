@@ -1,0 +1,16 @@
+\begin{tabular}{@{}p{7.9cm} r p{3.6cm}@{}}
+\toprule
+Check & Instances & Result \\
+\midrule
+Ledger partitions $E=I+\Lat$, $C=I+\Dbt$, $H(W,X)=I+\Lat+\Dbt$ & 100{,}000 & max error $8.9\times10^{-16}$ \\
+Balance $E-C=\Lat-\Dbt$ & 100{,}000 & max error $4.4\times10^{-16}$ \\
+Vocabulary bound $\Dbt\ge C-\log_2 N+\Lat$ & 100{,}000 & 0 violations \\
+Huffman length minus entropy, for $W$ and for $W\mid X$ & 3{,}000 & in $[0,1)$ to within $3\times10^{-16}$ \\
+Sufficiency $I(M;Y)=I(X;Y)$ & 600 & max error $1.8\times10^{-15}$ \\
+Minimality; all set partitions of alphabets of 3 to 6 messages & 4{,}119 & each sufficient partition refines $M$ \\
+Monotonicity in purpose & 404 & 404 of 404 hold \\
+Leakage equals $I(X;Y)-I(W;Y)$ & 5{,}000 & max error $2.7\times10^{-15}$ \\
+Depth identity $\Lk_Y(W_2)=\Lk_Y(W_1)+I(W_1;Y\mid W_2)$ & 5{,}000 & max error $3.6\times10^{-15}$ \\
+Purpose $Y=X$ gives leakage $H(X\mid W)=\Lat$ & 5{,}000 & max error $1.1\times10^{-15}$ \\
+\bottomrule
+\end{tabular}
