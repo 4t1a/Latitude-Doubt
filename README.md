@@ -1,4 +1,4 @@
-# Latitude and Doubt: An Exact Ledger of Meaning in Messages
+# Latitude and Doubt: An Exact Ledger of Meaning in Messages with Measurements on the Genetic Code and on English
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23287286.svg)](https://doi.org/10.5281/zenodo.23287286)
 [![License: Dual MIT & CC BY 4.0](https://img.shields.io/badge/License-MIT%20%7C%20CC%20BY%204.0-blue.svg)](LICENSE)
@@ -173,7 +173,7 @@ If you use this work, the code, or the derived metrics in your research, please 
 
 ```bibtex
 @article{atta2026latitude,
-  title={Latitude and Doubt: An exact ledger of meaning in messages},
+  title={Latitude and Doubt: An exact ledger of meaning in messages with measurements on the genetic code and on English},
   author={Atta, Moustafa Mahmoud},
   year={2026},
   month={September},

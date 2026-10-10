@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "latitude-and-doubt"
 version = "1.0.0"
-description = "An exact information-theoretic ledger of meaning in messages (Paper, Code, and Replication Pipeline)"
+description = "Latitude and Doubt: An exact ledger of meaning in messages with measurements on the genetic code and on English"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
