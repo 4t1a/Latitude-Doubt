@@ -1,0 +1,101 @@
+% ---------------------------------------------------------------- page and fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,left=30mm,right=30mm,top=29mm,bottom=30mm,headheight=14pt,headsep=8mm,footskip=12mm]{geometry}
+\usepackage{mathpazo}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{courier}
+\usepackage[protrusion=true,expansion=true,final]{microtype}
+\linespread{1.06}
+\setlength{\parindent}{1.3em}\setlength{\parskip}{0pt plus 0.4pt}
+\widowpenalty=5000 \clubpenalty=5000 \displaywidowpenalty=5000
+\emergencystretch=1.5em
+% ---------------------------------------------------------------- mathematics
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{xcolor}
+\definecolor{meaning}{HTML}{2B5C8A}   % deep blue: everything on the side of meaning
+\definecolor{meaninglt}{HTML}{8DB2D6} % light blue: doubt
+\definecolor{conv}{HTML}{4E8A72}      % green: conveyance
+\definecolor{form}{HTML}{E0902F}      % orange: latitude, the side of form
+\definecolor{leak}{HTML}{B5452B}      % brick red: leakage
+\definecolor{ink}{HTML}{1B1B1B}
+\definecolor{orcidgreen}{HTML}{A6CE39}
+\newcommand{\orcidicon}{\begingroup\tikz[baseline=(n.base)]\node[circle,fill=orcidgreen,text=white,inner sep=0.9pt,font=\sffamily\bfseries\fontsize{6.5}{6.5}\selectfont] (n) {iD};\endgroup}
+\definecolor{mute}{HTML}{666666}
+\definecolor{linkc}{HTML}{1F4E79}
+\newcommand{\Lat}{\Lambda}\newcommand{\Dbt}{\Delta}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Ex}{\mathbb{E}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\bits}{\text{bits}}
+\newcommand{\Lk}{\mathcal{L}}
+\newcommand{\given}{\mathbin{\vert}}
+\mathtoolsset{showonlyrefs=true}
+% ---------------------------------------------------------------- theorems
+\usepackage{aliascnt}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newaliascnt{proposition}{theorem}\newtheorem{proposition}[proposition]{Proposition}\aliascntresetthe{proposition}
+\newaliascnt{corollary}{theorem}\newtheorem{corollary}[corollary]{Corollary}\aliascntresetthe{corollary}
+\newaliascnt{lemma}{theorem}\newtheorem{lemma}[lemma]{Lemma}\aliascntresetthe{lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{theorem}{\par\needspace{8\baselineskip}}
+\BeforeBeginEnvironment{proposition}{\par\needspace{7\baselineskip}}
+\BeforeBeginEnvironment{corollary}{\par\needspace{6\baselineskip}}
+\BeforeBeginEnvironment{definition}{\par\needspace{6\baselineskip}}
+\BeforeBeginEnvironment{lemma}{\par\needspace{7\baselineskip}}
+% ---------------------------------------------------------------- headings, floats, captions, tables
+\usepackage{titlesec}
+\titleformat{\section}{\Large\sffamily\bfseries\color{ink}}{\thesection}{0.9em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries\color{ink}}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{ink}}{\thesubsubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{2.6ex plus 0.8ex minus 0.4ex}{1.4ex plus 0.3ex}
+\titlespacing*{\subsection}{0pt}{2.2ex plus 0.6ex minus 0.3ex}{1.0ex plus 0.2ex}
+\titlespacing*{\subsubsection}{0pt}{1.8ex plus 0.4ex minus 0.2ex}{0.8ex plus 0.1ex}
+\usepackage{placeins}
+\pretocmd{\section}{\needspace{6\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{6\baselineskip}}{}{}
+\usepackage{booktabs,array,makecell}
+\renewcommand{\arraystretch}{1.18}
+\setlength{\heavyrulewidth}{0.9pt}\setlength{\lightrulewidth}{0.5pt}\setlength{\cmidrulewidth}{0.3pt}
+\usepackage[font={small},labelfont={bf,sf},textfont={},labelsep=period,justification=raggedright,singlelinecheck=off,skip=6pt]{caption}
+\captionsetup[table]{position=top,skip=5pt}\captionsetup[figure]{position=bottom,skip=6pt}
+\renewcommand{\topfraction}{0.92}\renewcommand{\bottomfraction}{0.88}\renewcommand{\textfraction}{0.06}\renewcommand{\floatpagefraction}{0.78}
+\setcounter{topnumber}{3}\setcounter{bottomnumber}{2}\setcounter{totalnumber}{5}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=4pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=2pt,topsep=4pt,parsep=0pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\footnotesize\sffamily\color{mute}Latitude and Doubt}
+\fancyhead[R]{\footnotesize\sffamily\color{mute}M.\,M.\,Atta}
+\fancyfoot[C]{\footnotesize\sffamily\color{mute}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}\renewcommand{\headrule}{\hbox to\headwidth{\color{mute!60}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\footnotesize\sffamily\color{mute}\thepage}\renewcommand{\headrulewidth}{0pt}}
+% ---------------------------------------------------------------- figures
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathreplacing,calc,positioning,backgrounds}
+\usepackage{pgfplots}\pgfplotsset{compat=1.17}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{
+  every axis/.append style={font=\footnotesize\sffamily,tick label style={font=\scriptsize},label style={font=\footnotesize},legend style={font=\scriptsize,draw=none,fill=none,inner sep=1pt},
+    axis line style={mute!80,line width=0.4pt},tick style={mute!80,line width=0.4pt},major grid style={mute!25,line width=0.25pt},grid=major,every axis title/.append style={font=\footnotesize\sffamily\bfseries}},
+}
+% ---------------------------------------------------------------- references and links
+\usepackage[numbers,sort&compress]{natbib}
+\setlength{\bibsep}{2.5pt plus 0.5pt}\renewcommand{\bibfont}{\small}
+\usepackage[colorlinks=true,linkcolor=linkc,citecolor=linkc,urlcolor=linkc,bookmarksnumbered=true,pdfusetitle=false,
+  pdftitle={Latitude and Doubt: An Exact Ledger of Meaning in Messages},pdfauthor={Moustafa Mahmoud Atta},
+  pdfkeywords={semantic information, entropy, synonymy, ambiguity, sufficiency, genetic code, steganography}]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\crefname{theorem}{Theorem}{Theorems}\crefname{proposition}{Proposition}{Propositions}\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}\crefname{example}{Example}{Examples}\crefname{figure}{Figure}{Figures}\crefname{table}{Table}{Tables}
+\crefname{section}{Section}{Sections}\crefname{appendix}{Appendix}{Appendices}
+\input{tables/numbers.tex}
+\input{tables/example_numbers.tex}

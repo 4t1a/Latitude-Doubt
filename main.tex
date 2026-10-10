@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble}
+\begin{document}
+\pagestyle{plain}
+% ------------------------------------------------------------------ title block
+\begin{center}
+{\sffamily\bfseries\fontsize{24}{28}\selectfont Latitude and Doubt}\\[7pt]
+{\sffamily\large An exact ledger of meaning in messages}\\[2pt]
+{\sffamily\small with measurements on the genetic code and on English}\\[15pt]
+{\large Moustafa Mahmoud Atta}\\[1pt]
+{\sffamily\small Independent Research}\\[1pt]
+{\sffamily\small \href{mailto:m.m.atta@outlook.com}{m.m.atta@outlook.com}}\\[1pt]
+{\sffamily\small \href{https://orcid.org/0009-0008-6724-4698}{\orcidicon\,https://orcid.org/0009-0008-6724-4698}}\\[4pt]
+{\sffamily\small 29 September 2026\enspace\textperiodcentered\enspace Version 1.0}
+\end{center}
+\vspace{4pt}
+\begin{flushright}\small\itshape
+``Expression is free exactly where meaning is silent.\\ What the speaker chooses there is the speaker.''\\[1pt]
+\upshape\footnotesize M.\,M.\,Atta
+\end{flushright}
+\vspace{4pt}
+{\color{mute}\hrule height 0.5pt}\vspace{7pt}
+\begin{minipage}{\textwidth}
+\small
+\noindent{\sffamily\bfseries Abstract.}\enspace
+Shannon set the meaning of messages aside as irrelevant to the engineering problem. This paper restores it as bookkeeping.
+For a source that pairs what is meant, $W$, with what is said, $X$, the joint entropy divides exactly into three non-negative parts:
+the information the form conveys, $I(W;X)$; the \emph{latitude} $\Lat=H(X\given W)$, which the speaker remains free to choose once the meaning is fixed;
+and the \emph{doubt} $\Dbt=H(W\given X)$, which the listener cannot recover from the form. The identities are the chain rule; the use made of them is the contribution.
+Meaning need not be declared by an annotator. For any purpose $Y$, the coarsest partition of messages that loses no information about $Y$ is the belief $P(Y\given x)$ that they induce,
+and only the identity partition is adequate for every purpose. The \emph{leakage} $I(X;Y\given W)$ measures how much a declared meaning fails to screen off form from consequence.
+Latitude has an operational value: in an idealized model with a shared key, it is the exact rate at which a hidden message can be written into the form of an unambiguous source without altering the meaning or the statistics of the text, and a finite-precision implementation is analysed separately.
+An unambiguous language with content $C$ and latitude $\Lat$ needs at least $2^{C+\Lat}$ distinct forms.
+We measure the ledger on six sequenced genomes, where the meaning map is the genetic code and the doubt is zero. Latitude is \SminGenome--\SmaxGenome{} bits per codon;
+synonymous choice carries \PanelFrac\,\% of the information that identifies the genome of a codon and \HegFrac\,\% of the information that separates highly expressed \emph{E.\,coli} genes from the rest;
+held-out genes reproduce these information values to within 0.003 bits; and \EmbBits{} bits were hidden in \EmbGenes{} real genes without changing the encoded amino-acid sequence of any of them.
+In English the balance between latitude and doubt depends on what counts as a form and on whether items are weighted by use: on the well-attested core of SemCor doubt exceeds latitude for lemmas, by \SemDmSTwenty{} bits per word, but not for inflected words, and among \InvN{} wordnets latitude exceeds doubt in \InvLatGreater{}.
+The estimators are validated against a law of known truth, and every number in the text is produced by the code that accompanies the paper.\par
+\medskip
+\noindent{\sffamily\bfseries Keywords.}\enspace semantic information, entropy, synonymy, ambiguity, sufficiency, leakage, genetic code, steganography.\par
+\noindent{\sffamily\bfseries MSC 2020.}\enspace 94A17, 94A15, 91F20, 92D20.\par
+\end{minipage}
+\vspace{5pt}{\color{mute}\hrule height 0.5pt}
+\pagestyle{fancy}
+\vspace{6pt}
+\input{sections/01_introduction}
+\input{sections/02_ledger}
+\input{sections/03_meaning}
+\input{sections/04_operational}
+\input{sections/05_estimation}
+\input{sections/06_measurements}
+\input{sections/07_related}
+\input{sections/08_limits}
+\FloatBarrier
+{\small\setlength{\bibsep}{2pt}
+\bibliographystyle{plainnat}
+\bibliography{references}}
+\appendix
+\input{sections/A_data}
+\input{sections/B_notation}
+\input{sections/C_inventory}
+\end{document}

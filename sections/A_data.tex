@@ -1,0 +1,27 @@
+\section{Data, software and reproducibility}\label{app:data}
+\paragraph{Sequence data.} The coding sequences are example files distributed with public software and read without modification. The \emph{E.\,coli} K-12 MG1655, \emph{S.\,aureus} NCTC 8325, \emph{S.\,argenteus} and \emph{S.\,agnetis} files are the nucleotide FASTA examples of the CodonU package; the \emph{C.\,simulans} PES1 record is the GenBank file distributed with the codoff package; the \emph{A.\,thaliana} plastid record (NC\_000932) is from the Biopython test suite \citep{cock2009}; the list of highly expressed \emph{E.\,coli} genes is the example file of the freqgen package. SHA-256 sums of the files as used are in \texttt{data/CHECKSUMS.txt} of the archive. The accessions of \cref{tab:filters} are those in the file headers.
+\paragraph{Corpus and inventories.} SemCor is read through NLTK \citep{bird2009} from the \texttt{semcor} and \texttt{wordnet} packages (WordNet~3.0). Documents whose path begins with \texttt{brown1} or \texttt{brown2} are used; \texttt{brownv} (verbs only) is not. The wordnets of other languages are the tab files of the \texttt{omw-1.4} package \citep{bond2013}; only lines of type \texttt{lemma} are used.
+\paragraph{Software.} Python with NumPy, SciPy, pandas and Biopython; LaTeX with pgfplots. The versions used are in \texttt{data/ENVIRONMENT.txt}. Random generators are seeded in each script; the seed of every experiment is in its script.
+\Needspace*{19\baselineskip}
+\paragraph{Scripts.} All code is in the \texttt{code} folder of the archive; \texttt{README.md} gives the order in which to run it.
+\begin{center}\small
+\begin{tabular}{@{}l p{9.4cm}@{}}
+\toprule
+Script & Purpose \\
+\midrule
+\texttt{ledgerlib.py} & definitions of the ledger, estimators, certified interval \\
+\texttt{fetch\_data.py} & downloads the raw files and writes their SHA-256 sums \\
+\texttt{dna\_experiment.py} & ledger, depth and identity of the genomes (\cref{sec:measurements}) \\
+\texttt{dna\_identification.py} & held-out test of the relevance ledger \\
+\texttt{embedding\_demo.py} & latitude channel on real genes (\cref{thm:channel,prop:finite}) \\
+\texttt{extract\_semcor.py} & reads SemCor through NLTK \\
+\texttt{semcor\_experiment.py} & SemCor ledger, sensitivity analysis, profiles (\cref{sec:semcor}) \\
+\texttt{semcor\_subsample.py} & sample-size dependence of the plug-in ledger \\
+\texttt{inventory\_experiment.py} & type-level ledger of 32 wordnets (\cref{sec:inventory}) \\
+\texttt{verification.py} & randomized checks of the identities (\cref{tab:verif}) \\
+\texttt{estimator\_validation.py} & estimators on a law of known truth (\cref{sec:estimation}) \\
+\texttt{record\_environment.py} & software versions \\
+\texttt{make\_assets.py} & writes every table body, plot data file and number macro of this document \\
+\bottomrule
+\end{tabular}
+\end{center}

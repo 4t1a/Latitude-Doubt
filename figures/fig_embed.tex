@@ -1,0 +1,13 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.74\textwidth,height=5.4cm,xmode=log,xmin=70,xmax=600,ymin=0.9,ymax=1.65,xtick={85,155,265,470},xticklabels={{60--119},{120--199},{200--349},{$\geq$350}},
+  xlabel={gene length, codons},ylabel={bits per codon},legend style={at={(0.97,0.05)},anchor=south east,legend columns=1,draw=none,fill=white,fill opacity=0.85,text opacity=1}]
+\addplot[color=form,thick,mark=*,mark size=2pt] table[x=mid,y=capacity,col sep=comma]{data/embedding_bins.csv};
+\addplot[color=leak,thick,mark=square*,mark size=2pt] table[x=mid,y=rate,col sep=comma]{data/embedding_bins.csv};
+\legend{capacity $\sum_i H(X\!\mid\! a_i)/n$,rate achieved, $k/n$}
+\end{axis}
+\end{tikzpicture}
+\caption{Bits hidden per codon in real \emph{E.\,coli} genes without changing the encoded amino-acid sequence: the capacity of the synonymous choice (Theorem~\ref{thm:channel}) and the rate actually achieved with a safety margin of three standard deviations. The gap closes as $1/\sqrt{n}$.}
+\label{fig:embed}
+\end{figure}

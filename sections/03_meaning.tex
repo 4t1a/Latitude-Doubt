@@ -1,0 +1,77 @@
+\section{Where meaning comes from}\label{sec:meaning}
+A ledger needs a meaning $W$. There are two ways to obtain one. Someone can declare it, or it can be derived from what the message is for.
+
+\subsection{Declared meaning}
+In many systems $W$ is attached to $X$ by a process outside the source. The genetic code is a physical process. A lexicographer's sense inventory is a human one: WordNet assigns each word occurrence a synset \citep{miller1995,fellbaum1998}. The behaviour of a program on a test suite is an operational one.
+In each case the ledger of \cref{sec:ledger} applies as it stands. What it cannot say is whether the declared $W$ is the right one for a given use. That is the question of the next two subsections.
+
+\subsection{Meaning for a purpose}
+Wittgenstein wrote that the meaning of a word is its use in the language \citep{wittgenstein1953}, and Bateson called information a difference which makes a difference \citep{bateson1972}. Both point to consequences. We take them literally.
+
+\begin{definition}[Purpose, belief, meaning for a purpose]\label{def:purpose}
+Let $(X,Y)$ be jointly distributed with finite ranges; $Y$ is the \emph{purpose}, whatever the receiver will act on or learn. For $x$ in the support of $X$ the \emph{belief} is $b(x)=\Pr(Y\in\cdot\given X{=}x)$, a distribution on $\mathcal Y$.
+The \emph{meaning of $X$ for purpose $Y$} is the random element $M_Y=b(X)$; equivalently, the partition of the support of $X$ into the level sets of $b$.
+\end{definition}
+Two messages have the same meaning for $Y$ exactly when they leave the receiver with the same belief about $Y$. This depends only on $P_{XY}$; no annotator is involved.
+
+\begin{theorem}[Meaning for a purpose]\label{thm:derived}
+Let $M=M_Y$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item \emph{Sufficiency.} $Y-M-X$ is a Markov chain. Hence $I(X;Y\given M)=0$ and $I(M;Y)=I(X;Y)$.
+\item \emph{Minimality.} If $T=f(X)$ is any function with $I(T;Y)=I(X;Y)$, then $M$ is a function of $T$ almost surely. So $M$ is the coarsest function of $X$ that loses no information about $Y$; it is unique up to relabelling.
+\item \emph{Ledger.} For the pair $(M,X)$ the doubt is zero and
+\begin{equation}
+E=H(M)+H(X\given M)=\underbrace{I(X;Y)}_{\text{consequence}}+\underbrace{H(M\given Y)}_{\text{hedge}}+\underbrace{H(X\given M)}_{\text{latitude}} .
+\end{equation}
+\item \emph{Monotone in the purpose.} If $Y'=h(Y)$ for a function $h$, then $M_{Y'}$ is a function of $M_Y$; so $H(M_{Y'})\le H(M_Y)$ and $H(X\given M_{Y'})\ge H(X\given M_Y)$.
+\item \emph{Extremes.} If $Y$ is constant, $M$ is constant and all of $E$ is latitude. If $Y=X$, then $M$ is in one-to-one correspondence with $X$ and the latitude is zero.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(a) Let $m$ be a value of $M$ and $x$ any message with $b(x)=m$. Then $\Pr(y\given x,m)=\Pr(y\given x)=m(y)$, and $\Pr(y\given m)=\sum_{x:\,b(x)=m}\Pr(x\given m)\,b(x)(y)=m(y)$. So $\Pr(y\given x,m)=\Pr(y\given m)$, that is $Y\perp X\mid M$. Since $M$ is a function of $X$, the chain rule gives $I(X;Y)=I(X,M;Y)=I(M;Y)+I(X;Y\given M)=I(M;Y)$.
+(b) Let $T=f(X)$ with $I(T;Y)=I(X;Y)$. Because $T$ is a function of $X$, $I(X;Y\given T)=I(X,T;Y)-I(T;Y)=I(X;Y)-I(T;Y)=0$, so $Y\perp X\mid T$. Hence for every $t$ with positive probability and all $x,x'$ in $f^{-1}(t)$ of positive probability, $\Pr(y\given x)=\Pr(y\given t)=\Pr(y\given x')$. Thus $b$ is constant on each fibre of $f$, that is $M=g(T)$.
+(c) $M$ is a function of $X$, so $H(M\given X)=0$; the chain rule gives $H(X)=H(X,M)=H(M)+H(X\given M)$. By (a), $H(M)=I(M;Y)+H(M\given Y)=I(X;Y)+H(M\given Y)$.
+(d) The belief about $Y'$ is the image of the belief about $Y$ under $h$, so $b(x)=b(x')$ implies $b'(x)=b'(x')$. A function of a variable has no more entropy, and conditioning on more leaves no more.
+(e) If $Y$ is constant, all beliefs coincide. If $Y=X$, then $b(x)$ is the point mass at $x$, which determines $x$.
+\end{proof}
+The consequence term $I(X;Y)$ is the information about $Y$ that the message carries, and it is the only one of the three that grows when the message becomes more informative. The hedge $H(M\given Y)$ is the entropy of the receiver's confidence not explained by the truth: a forecaster who says ``30\,\%'' on some days and ``70\,\%'' on others has content $1$ bit in $M$ but conveys less than one bit about rain. Content, in this sense, counts distinct beliefs; it is not the same as information. The latitude is what remains: variation of the form to which the purpose is blind.
+
+\subsection{Adequacy and leakage}
+A declared meaning $W$ is adequate for a purpose when it screens the form off from the consequence.
+\begin{definition}[Adequacy and leakage]\label{def:leak}
+Let $W$ be jointly distributed with $(X,Y)$. The \emph{leakage} of $W$ about the purpose $Y$ is $\Lk_Y(W)=I(X;Y\given W)$. The meaning $W$ is \emph{adequate} for $Y$ if $\Lk_Y(W)=0$.
+\end{definition}
+\begin{theorem}[Leakage]\label{thm:leak}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\Lk_Y(W)\ge0$, with equality iff $Y\perp X\mid W$.
+\item If $W=f(X)$, then $\Lk_Y(W)=I(X;Y)-I(W;Y)$, and $W$ is adequate for $Y$ iff $M_Y$ is a function of $W$, that is, iff the partition induced by $f$ refines the partition induced by $b$. In general $\Lk_Y(W)=I(X;Y)-I(W;Y)+I(W;Y\given X)$.
+\item \emph{Abstraction leaks.} If $W_1=f(X)$ and $W_2=g(W_1)$, then $\Lk_Y(W_2)=\Lk_Y(W_1)+I(W_1;Y\given W_2)$: each step of abstraction leaks exactly the relevance it discards.
+\item \emph{No universal meaning.} If $W=f(X)$ is adequate for every purpose $Y$, then $f$ is injective on the support of $X$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(a) is the non-negativity of conditional mutual information. (b) For $W=f(X)$ the chain rule gives $I(X;Y)=I(X,W;Y)=I(W;Y)+I(X;Y\given W)$. In general $I(X,W;Y)$ expands in both orders, \[ I(W;Y)+I(X;Y\given W)=I(X;Y)+I(W;Y\given X), \] which is the last formula. If $I(W;Y)=I(X;Y)$ then \cref{thm:derived}(b) gives $M=g(W)$. Conversely, if $M=g(W)$ then $I(W;Y)\ge I(M;Y)=I(X;Y)$ by data processing, and $I(W;Y)\le I(X;Y)$ because $W$ is a function of $X$.
+(c) By (b), $\Lk_Y(W_2)-\Lk_Y(W_1)=I(W_1;Y)-I(W_2;Y)$, and $I(W_1;Y)=I(W_1,W_2;Y)=I(W_2;Y)+I(W_1;Y\given W_2)$ since $W_2$ is a function of $W_1$.
+(d) Take $Y=X$. Then $\Lk_X(W)=I(X;X\given W)=H(X\given W)$, which vanishes iff $X$ is a function of $W=f(X)$, iff $f$ is injective on the support.
+\end{proof}
+Part (d) is the philosophical content of the section. There is no purpose-free meaning: a partition that discards anything discards it for some purpose. The trivial partition is adequate for the purpose ``nothing'', and the identity is adequate for the purpose ``the exact words''. Every meaning in between is a statement about what the receiver cares about.
+
+The leakage has an everyday reading. Linguists call the part of a word's effect that its denotation does not fix its connotation, register or style. Leakage measures it in bits, for a stated purpose: how much a hearer learns about the consequence from the choice among synonyms.
+
+\subsection{Depth}
+Meanings come in levels. A codon has an amino acid, which has a chemical class; a word occurrence has a sense, which has a semantic field.
+\begin{proposition}[Depth ledger]\label{prop:depth}
+Let $W_1=f_1(X)$, $W_2=f_2(W_1)$, \dots, $W_L=f_L(W_{L-1})$ be successive functions, and $W_0=X$. Then
+\begin{equation}
+H(X)=H(W_L)+\sum_{k=1}^{L}H(W_{k-1}\given W_k),\qquad
+I(X;Y)=I(W_L;Y)+\sum_{k=1}^{L}I(W_{k-1};Y\given W_k).
+\end{equation}
+The term with $k=1$, the first of each sum, is the latitude $H(X\given W_1)$ and the leakage $\Lk_Y(W_1)$, respectively: the contribution of the finest level.
+\end{proposition}
+\begin{proof}
+Since $W_k$ is a function of $W_{k-1}$, the chain rule gives
+\[ H(W_{k-1})=H(W_k)+H(W_{k-1}\given W_k),\qquad I(W_{k-1};Y)=I(W_k;Y)+I(W_{k-1};Y\given W_k). \]
+Sum over $k$ and telescope.
+\end{proof}
+\cref{fig:depth} shows the two ledgers side by side. They are two decompositions of two different quantities, the entropy of the message and the information it carries about a purpose, over the same levels. The first says where the choices are made; the second says where the consequences live. In \cref{sec:measurements} the two profiles differ sharply: the entropy of a codon is spread over all three levels, while the information it carries about which genome it came from sits almost entirely at the finest level, the synonymous choice.
+\input{figures/fig_depth}

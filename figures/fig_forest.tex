@@ -1,0 +1,14 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.88\textwidth,height=7.4cm,xmin=-0.42,xmax=1.12,xlabel={$\Dbt-\Lat$, bits per word ($\tau=20$, $95\,\%$ interval)},
+  symbolic y coords={Lemma (main analysis),Lemma and part of speech,Inflected word as written,Nouns,Verbs,Adjectives,Adverbs,Brown 1 (103 documents),Brown 2 (83 documents)},
+  ytick=data,y dir=reverse,ymajorgrids=false,enlarge y limits=0.07,yticklabel style={font=\scriptsize\sffamily},
+  extra x ticks={0},extra x tick labels={},extra x tick style={grid=major,major grid style={dashed,color=leak,line width=0.8pt}}]
+\addplot[only marks,mark=*,mark size=2.3pt,color=meaning,error bars/.cd,x dir=both,x explicit,error bar style={line width=0.9pt,color=meaning}]
+  table[x=est,y=label,x error=err,col sep=comma]{data/semcor_forest.csv};
+\end{axis}
+\end{tikzpicture}
+\caption{Sensitivity of the sign of the balance $E-C=\Lat-\Dbt$ in SemCor. Each row is one analysis of \cref{tab:semcor_sens}; the dashed line is $\Dbt=\Lat$. Doubt exceeds latitude for lemmas, for lemmas with their part of speech, for nouns, verbs and adverbs, and in both collections; latitude exceeds doubt when inflected words are the forms; adjectives are balanced.}
+\label{fig:forest}
+\end{figure}

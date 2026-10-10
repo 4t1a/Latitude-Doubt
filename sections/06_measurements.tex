@@ -1,0 +1,105 @@
+\section{Measurements}\label{sec:measurements}
+The theory is exact, so measurements cannot confirm it. They serve three other purposes: to show the size of each term in real systems, to test the estimation protocol of \cref{sec:estimation}, and to show that the identities are usable, that is, that quantities computed from one part of the data predict another. We use two systems, the genetic code and sense-tagged English, chosen because in each the meaning of a message is fixed by something other than the analyst.
+
+\subsection{Data and meaning maps}\label{sec:data}
+\paragraph{Genomes.} We use the coding sequences of six genomes: \emph{Escherichia coli} K-12 MG1655 \citep{blattner1997}, \emph{Staphylococcus aureus} NCTC 8325, \emph{S.\,argenteus}, \emph{S.\,agnetis}, \emph{Corynebacterium simulans} PES1, and the plastid of \emph{Arabidopsis thaliana}. They span a range of base composition (GC content of coding sequence from $0.33$ to $0.60$) and include a closely related trio, which serves as a hard case. Sequences are read from the annotated coding sequences of public GenBank records; \cref{tab:filters} lists accessions and the records excluded (a coding sequence is excluded if its length is not a multiple of three, if it contains a character outside \texttt{ACGT}, or if it has an in-frame stop codon before its end; the three excluded \emph{E.\,coli} records are the selenoprotein genes, in which UGA is recoded). Every gene contributes its codons and its final stop codon. The provenance of each file is in \cref{app:data}.
+\begin{table}[tbp]
+\caption{Coding sequences used, with the filters applied.}\label{tab:filters}
+\centering\small
+\input{tables/tab_filters}
+\end{table}
+\paragraph{Meaning maps.} $X$ is the codon (64 values). $W$ is the amino acid or stop (21 values) by the standard genetic code; the bacterial and plastid code differ from it only in initiation codons. $\Dbt=0$. As a coarser level we use the six Dayhoff groups of amino acids \citep{dayhoff1978}, cysteine; alanine, glycine, proline, serine, threonine; aspartate, glutamate, asparagine, glutamine; histidine, lysine, arginine; isoleucine, leucine, methionine, valine; phenylalanine, tryptophan, tyrosine, together with stop, giving $G$ with seven values.
+\paragraph{Purposes.} $Y_1$ is the genome a codon came from, uniform over the six. $Y_2$ is whether a codon belongs to a highly expressed \emph{E.\,coli} gene: a list of \HegFile{} such genes is distributed with a codon-design tool, and \HegMatched{} of them match, by exact sequence, a gene among the \HegGenes{} usable ones; they contribute \HegPone\,\% of all codons.
+\paragraph{Uncertainty.} In this section all genome intervals are $95\,\%$ percentile intervals over $400$ resamplings of genes with replacement, since genes and not codons are the independent units; the intervals for SemCor are described in \cref{sec:semcor}.
+
+\subsection{The ledger of the genetic code}
+\cref{tab:genomes} and \cref{fig:genomes} give the ledger of each genome. The latitude lies between \SminGenome{} and \SmaxGenome{} bits per codon, which is \rhoMin--\rhoMax{}\,\% of the entropy of the codon. The effective vocabulary $2^E$ is \EffMin--\EffMax{} of the 64 codons (\EffShareMin--\EffShareMax{}\,\%), so \cref{cor:vocab} is satisfied with room to spare. The genomes differ far more in how they say than in what they say: the content $C$, the entropy of the protein alphabet, varies by $0.08$ bits over the six genomes and the latitude by $0.27$ bits. The gene-resampling intervals for $\Lat$ have half-width at most $0.01$ bits for the five bacterial genomes and $0.035$ for the plastid, which has only $85$ genes.
+\begin{table}[tbp]
+\caption{The ledger of the genetic code, $\Dbt=0$. Bits per codon; GC3 is the fraction of G or C at the third position of sense codons; $2^E$ is the effective number of codons.}\label{tab:genomes}
+\centering\small
+\input{tables/tab_genomes}
+\end{table}
+\input{figures/fig_genomes}
+
+\subsection{Where identity lives}\label{sec:identity}
+\paragraph{The panel.} Let $Y_1$ be uniform on the six genomes and draw a codon from the chosen genome. The codon carries $I(X;Y_1)=\PanelIX$ bits about the genome, out of $\log_26=\PanelLogK$ bits. \cref{tab:panel} splits this over the three levels of \cref{prop:depth}. The chemical class carries $\PanelIG$ bits, the amino acid within its class $\PanelIAA$ bits, and the choice among synonymous codons $\PanelL$ bits: $\PanelFrac\,\%$ of the total (interval $\PanelFracLo$--$\PanelFracHi\,\%$). The genetic code is far from adequate for the purpose of identifying the genome: its leakage is the greater part of the information. In these genomes the greater part of the information about origin sits in the latitude, the part of the message that the genetic code leaves free.
+\begin{table}[tbp]
+\caption{Where the information about the genome lives (\cref{prop:depth}). The three terms sum to $I(X;Y_1)$; intervals from resampling genes.}\label{tab:panel}
+\centering\small
+\input{tables/tab_panel}
+\end{table}
+\paragraph{Pairs.} \cref{fig:pairs} repeats the split for each of the $15$ pairs. For the ten pairs of bacterial genomes the share is between $\PairFracNoPlastidMin$ and $\PairFracMax\,\%$, over three orders of magnitude of total information (the leftmost point is the pair \emph{S.\,aureus} and \emph{S.\,argenteus}, whose codon usage differs by only $0.0002$ bits). Pairs that contain the plastid lie between $\PairFracPlastidMin$ and $\PairFracPlastidMax\,\%$: organelle genes differ from bacterial genes in amino-acid composition as well.
+\input{figures/fig_pairs}
+\paragraph{A held-out test.} The chain rule for relevance is an identity, so a test of it must be a prediction. We split the genes of each genome into two halves at random, fitted the three class-conditional laws $P_y(x)$, $P_y(w)$ and $P_y(x\given w)$ on one half with a smoothing constant of $\tfrac12$, and on the other half (i) assigned each gene to the genome with the highest log-likelihood under each law, and (ii) measured the information gain $\operatorname{E}[\log P_y(x)-\log\bar P(x)]$ per codon, averaged over the six genomes, where $\bar P$ is the equal mixture of the six laws. The last quantity should equal the training-half information; for the synonymous term it is defined by the chain rule as the codon gain minus the amino-acid gain.
+\cref{tab:heldout} shows that it does. The held-out gain for codons is $\HoldCodon$ bits against $\TrainCodon$ on the training half; for amino acids $\HoldAA$ against $\TrainAA$; for the synonymous choice $\HoldSilent$ against $\TrainSilent$. The largest discrepancy is $0.003$ bits. As classifiers, the synonymous choice alone identifies the genome of a gene almost as well as the full codon sequence (macro recall $\AccSilent$ against $\AccCodon$), and the amino acids alone identify it far less well ($\AccAA$; chance is $0.17$). \cref{fig:heldout} shows the dependence on gene length. Most of the errors of the codon classifier are between \emph{S.\,aureus} and \emph{S.\,argenteus}, which are nearly indistinguishable by codon usage.
+\begin{table}[tbp]
+\caption{Held-out test of the relevance ledger on $\HoldGenes$ genes: information per codon under the law fitted on the other half, and identification of the genome of a gene by the evidence shown.}\label{tab:heldout}
+\centering\small
+\input{tables/tab_heldout}
+\end{table}
+\input{figures/fig_heldout}
+\paragraph{A second purpose.} The same genes carry information about a different question: is this gene highly expressed? For $Y_2$, $I(X;Y_2)=\HegIX$ bits per codon of the $\HegHY$ bits of uncertainty in $Y_2$. The amino acid carries $\HegIW$ bits and the synonymous choice $\HegL$ bits, so $\HegFrac\,\%$ (interval $\HegLo$--$\HegHi\,\%$) of what a codon says about expression is in the choice among synonyms. This is the translational-selection effect in highly expressed bacterial genes \citep{gouy1982,sharp1987}, stated as a leakage: for the purpose ``how much protein is made'', the genetic code is again far from adequate. Two purposes give two leakages on one source; this is \cref{thm:leak}(d) at work, and it is why the meaning of a codon cannot be stated without a purpose.
+
+\subsection{Latitude as a channel, on real genes}\label{sec:embedding}
+To test \cref{thm:channel} and \cref{prop:finite} we took \EmbGenes{} randomly chosen \emph{E.\,coli} genes of $60$ to $700$ codons. For each gene the cover meaning $w^n$ is its amino-acid sequence, the final stop codon included, and the cover law is the genome-wide synonymous law $P(x\given a)$ of \emph{E.\,coli}, kept as exact fractions of the codon counts (assumptions A1 and A2). We used the scheme of the proof with exact rational arithmetic. The payload had $k=\lfloor\mu-3\sigma-7\rfloor$ bits for each gene ($\mu$ and $\sigma$ as in the theorem). The key $R$ and the dither $V$ had $P=\lceil\sum_i\max_x(-\log Q(x\given a_i))\rceil+65$ bits, which satisfies the condition of \cref{prop:finite} with $s=64$: the law of the embedded text is within total variation $2^{-\EmbSecBits}$ of the cover law, and the failure probability is within $2^{-63}$ of the idealized one. The mean key length was \EmbKeyBits{} bits, \EmbKeyRatio{} times the payload. The random bits came from a seeded Mersenne Twister generator so that the experiment is reproducible; this is not a secret key in the sense of A3, and a deployment would need a cryptographic generator. We decoded each payload from the codons, the amino-acid sequence and the key, and checked that the embedded gene translates to the natural protein.
+
+\EmbOK{} of the \EmbGenes{} genes decoded correctly; \EmbFail{} failures were reported and \EmbSilent{} wrong messages were returned. Every embedded gene translates to the same amino-acid sequence as the natural one. In total \EmbBits{} bits were hidden in \EmbCodons{} codons, a rate of $\EmbRate$ bits per codon against a capacity $\sum_iH(X\given a_i)/n$ of $\EmbCap$ (\EmbEff\,\% of capacity); \cref{tab:embed} and \cref{fig:embed} show the rate approaching capacity as genes lengthen. On average $\EmbChanged\,\%$ of the codons of a gene differ from its natural ones. As a demonstration, a sentence of $\ShowBytes$ bytes with a 16-bit tag ($\ShowBits$ bits; capacity of the gene $\ShowCap$ bits) was written into a gene of $\ShowCodons$ codons, changing $\ShowChanged$ of them and no amino acid; it decoded correctly after $\ShowAttempts$ attempt (a detected failure would be retried with fresh randomness). \cref{fig:showcase} shows the first codons.
+
+These genes are protein-preserving, not shown to be biologically neutral: we make no claim about expression, folding or fitness (\cref{sec:channel}).
+\begin{table}[tbp]
+\caption{Embedding a hidden message in the synonymous choices of real \emph{E.\,coli} genes. Capacity is $\sum_iH(X\given a_i)/n$, the exact expected number of bits per codon; the rate is the payload actually used.}\label{tab:embed}
+\centering\small
+\input{tables/tab_embed}
+\end{table}
+\input{figures/fig_embed}
+\begin{figure}[tbp]
+\centering\footnotesize
+\begin{tabular}{@{}l@{}}
+\input{tables/showcase_codons}
+\end{tabular}
+\caption{The first $16$ codons of the gene of the demonstration, natural above and with the message embedded below. Codons that differ are in bold red; both rows translate to the same amino-acid sequence.}\label{fig:showcase}
+\end{figure}
+The security claim is relative to the cover law and is testable. Pooled over the \EmbGenes{} genes, the codon counts of the embedded genes are consistent with the law $P(x\given a)$ (Pearson $\chi^2$ with $\EmbDof$ degrees of freedom, $p=\EmbPstego$), and those of the natural genes are not ($p=\EmbPnat$). Per gene, $\chi^2$ divided by its degrees of freedom is $\EmbChiStego$ for the embedded genes and $\EmbChiNat$ for the natural ones. Natural genes are overdispersed relative to the genome-wide law, because codon bias varies from gene to gene, and embedded genes are not. An observer who models this variation could tell the two apart, as \cref{sec:channel} warned; the guarantee is for the cover law used.
+
+\subsection{English: synonymy and ambiguity together}\label{sec:semcor}
+In natural language neither map is a function. We use SemCor, the portion of the Brown Corpus in which each content word carries its WordNet sense \citep{miller1993,miller1995,fellbaum1998}, as distributed with NLTK \citep{bird2009}. We take the $186$ documents in which all content words are tagged, giving $\SemTokens$ tokens, each with a lemma ($X$, part-of-speech blind, $\SemKx$ types) and a synset ($W$, $\SemKw$ types). Named-entity chunks without a synset are excluded. The main analysis takes the lemma as the form, so inflection lies outside the latitude; the sensitivity analysis below changes this.
+
+\paragraph{Estimation.} The plug-in ledger of the whole corpus has $\Lat=\SemSPlainOne$ and $\Dbt=\SemDPlainOne$ bits (Miller--Madow $\SemSOne$ and $\SemDOne$), so $E<C$ ($\SemEOne$ against $\SemCOne$ bits). As \cref{tab:subsample} showed, these numbers still move with the sample size, so we restrict attention to the well-attested core: for a threshold $\tau$ we repeatedly delete every lemma and every synset with fewer than $\tau$ tokens until none remains, and compute the ledger of what is left. Intervals are $95\,\%$ normal intervals from the bootstrap standard error over $\SemB$ resamplings of documents, the independent unit. We did not use percentile intervals, because a resample contains fewer distinct types than the sample and diversity-type statistics are shifted by that. For the whole corpus the bootstrap standard error of $\Dbt-\Lat$ ($\SemSeBootOne$ bits) agrees with half-sampling ($\SemSeHalfOne$) and with the delete-one-document jackknife ($\SemSeJackOne$). In the $\tau=20$ core the jackknife is $\SemJackRatio$ times larger than the bootstrap ($\SemSeJackTwenty$ against $\SemSeBootTwenty$ bits), because the core changes with the resample; the intervals there may be somewhat too narrow, but no conclusion below depends on this.
+
+\paragraph{The ledger of the core.} \cref{tab:semcor} and \cref{fig:semcor}(a) give $\Lat$, $\Dbt$ and their difference. For $\tau=20$, which keeps \SemKeptTwenty\,\% of the tokens, $\Lat=\SemSTwenty$ and $\Dbt=\SemDTwenty$ bits per word, so $\Dbt-\Lat=\SemDmSTwenty\pm\SemDmSTwentyHW$ bits; the plug-in and Miller--Madow values differ by at most $\SemPlugGap$ bits for $\Lat$ and $\SemPlugGapD$ bits for $\Dbt$ from $\tau=20$ upward. For the whole corpus $\Dbt-\Lat=\SemDmSOne\pm\SemDmSOneHW$. The balance is positive at every $\tau$ in the table.
+\begin{table}[tbp]
+\caption{The ledger of the well-attested core of SemCor, form: lemma. $\tau$ is the minimum number of tokens of every kept lemma and synset. Miller--Madow estimates in bits with $95\,\%$ intervals from $\SemB$ document resamplings.}\label{tab:semcor}
+\centering\small
+\input{tables/tab_semcor}
+\end{table}
+
+\paragraph{Sensitivity.} \cref{tab:semcor_sens} and \cref{fig:forest} change what the analysis calls a form, the part of speech and the collection, at $\tau=20$ and, for the balance, at $\tau=10$.
+
+\emph{Form.} With the part of speech added to the lemma, the balance is $\SemDmSLemmaPos\pm\SemDmSLemmaPosHW$: knowing the category removes doubt between categories (a noun and a verb with one spelling) but not within them. With the inflected word as written, the balance is $\SemDmSSurface\pm\SemDmSSurfaceHW$: latitude rises to $0.96$ bits because inflection (\emph{took}, \emph{taken}, \emph{taking}) is freedom that the synset does not fix, and doubt changes little, so latitude now exceeds doubt. The sign of $E-C$ therefore depends on whether grammatical variation counts as part of the form.
+
+\emph{Part of speech.} Doubt exceeds latitude for nouns ($\SemPosN\pm\SemPosNHW$), verbs ($\SemPosV\pm\SemPosVHW$) and adverbs ($\SemPosR\pm\SemPosRHW$); the two are balanced for adjectives ($\SemPosA\pm\SemPosAHW$). Verbs account for most of the doubt.
+
+\emph{Collection.} The two collections of SemCor, analysed separately, agree: $\SemBrOne$ and $\SemBrTwo$ at $\tau=20$, and $0.43$ and $0.43$ at $\tau=10$.
+\begin{table}[tbp]
+\caption{Sensitivity of the SemCor ledger to the definition of the form, the part of speech and the collection. Bits; Miller--Madow estimates with $95\,\%$ intervals from $\SemB$ document resamplings. ``Kept'' is the fraction of the tokens of the analysis that survive the core restriction.}\label{tab:semcor_sens}
+\centering\small
+\input{tables/tab_semcor_sens}
+\end{table}
+\input{figures/fig_forest}
+
+\paragraph{Profiles.} \cref{fig:semcor}(b) breaks the ledger down by item. Among the $\SemNItems$ lemmas with at least $20$ tokens, doubt rises with frequency, from $\SemDoubtLow$ bits (about $\SemEffLow$ effective senses) in the lowest band to $\SemDoubtPeak$ bits (about $\SemEffPeak$ senses) for lemmas with $\SemPeakLo$--$\SemPeakHi$ tokens; the top band, with $\SemTopBandN$ lemmas of at least $320$ tokens, is slightly lower at $\SemDoubtTopBand$ bits. The Spearman correlation with the logarithm of the count is $\SemSpearman$. This is Zipf's meaning-frequency relation \citep{zipf1945} in the ledger's units. The most ambiguous frequent lemmas are \emph{\SemTopA} ($\SemTopAH$ bits), \emph{\SemTopB}, \emph{\SemTopC} and \emph{\SemTopD}. Latitude per synset rises only slowly, from $\SemLatLow$ to $\SemLatHigh$ bits over the same range of counts, with a rank correlation of $\SemLatSpearman$.
+\input{figures/fig_semcor}
+
+\subsection{A sense inventory without a corpus}\label{sec:inventory}
+The corpus ledger weights each word by how often it is used. A sense inventory has no usage. For a wordnet we count every distinct pair (synset, lemma) once, so that $P(w,x)$ is proportional to $1$ on the pairs; the lemma is the lower-cased string, as in the main SemCor analysis, so a spelling shared by a noun and a verb is one lemma. Then $\Lat$ is the mean over pairs of $\log_2$ of the number of lemmas in the pair's synset, $\Dbt$ is the mean over pairs of $\log_2$ of the number of synsets of the pair's lemma, and the balance of \cref{thm:ledger} holds exactly (the code checks it). English WordNet 3.0 has $\InvEngPairs$ pairs in $\InvEngSynsets$ synsets, with $\Lat=\InvEngLat$ and $\Dbt=\InvEngDbt$ bits: here latitude exceeds doubt, the opposite sign from the lemmas of SemCor. The two analyses differ in weighting, and \cref{fig:semcor}(b) shows that doubt rises with frequency, which is consistent with weighting by use moving the balance toward doubt; we have not isolated this as the cause.
+
+The Open Multilingual Wordnet \citep{bond2013} attaches wordnets of other languages to the same synsets. Among the $\InvN$ wordnets with at least $10{,}000$ synsets (of $\InvAll$ in the package; \cref{tab:inventory} lists all), latitude exceeds doubt in $\InvLatGreater$ and doubt exceeds latitude in $\InvDbtGreater$ (\cref{fig:inventory}). The difference $\Lat-\Dbt$ ranges from $\InvDiffMin$ to $\InvDiffMax$ bits. These numbers describe the resource as much as the language, since wordnets are built by different methods and with different policies for synonyms. We draw one conclusion: neither sign of the balance is a general property of lexicons, and the corpus result is a statement about English usage under a stated definition of the form.
+\input{figures/fig_inventory}
+
+\subsection{Verification of the identities}
+Every identity and theorem of \cref{sec:ledger,sec:meaning,sec:operational} that can be checked numerically was checked on random instances (\cref{tab:verif}). These checks do not support the theorems, which are proved; they guard against algebraic slips and coding errors, and they exercised the same library that computed the tables above. The minimality check enumerates every set partition of alphabets of three to six messages and confirms that each partition that loses no information is a refinement of the belief partition.
+\begin{table}[tbp]
+\caption{Randomized verification of the identities and theorems ($\VerN$ random joint laws for the first block).}\label{tab:verif}
+\centering\small
+\input{tables/tab_verif}
+\end{table}

@@ -1,0 +1,23 @@
+\section{Notation}\label{app:notation}
+\begin{center}\small
+\begin{tabular}{@{}l p{7.4cm} l@{}}
+\toprule
+Symbol & Meaning & Where \\
+\midrule
+$W$, $X$, $Y$ & meaning, form, purpose (consequence) & \cref{def:source,def:purpose} \\
+$C=H(W)$ & content & \cref{def:ledger} \\
+$E=H(X)$ & expression & \cref{def:ledger} \\
+$\Lat=H(X\given W)$ & latitude & \cref{def:ledger} \\
+$\Dbt=H(W\given X)$ & doubt & \cref{def:ledger} \\
+$I=I(W;X)$ & conveyance & \cref{def:ledger} \\
+$b(x)$, $M_Y=b(X)$ & belief about $Y$ given $x$; meaning of $X$ for purpose $Y$ & \cref{def:purpose} \\
+$\Lk_Y(W)=I(X;Y\given W)$ & leakage of the meaning $W$ about $Y$ & \cref{def:leak} \\
+$G$, $W_k$ & coarser meanings; levels of depth & \cref{prop:depth} \\
+$Q(x^n\given w^n)$ & cover law of the latitude channel & \cref{sec:channel} \\
+$\mu$, $\sigma^2$ & mean and variance of $-\log Q(X^n\given w^n)$ & \cref{thm:channel} \\
+$\tau$ & minimum count defining the well-attested core & \cref{sec:semcor} \\
+$d(W,X)=\Lat+\Dbt$ & distance between meaning and form & \cref{prop:dist} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Logarithms are to base~2 and information is in bits. $\Pr$ is probability and $\operatorname{E}$ expectation.

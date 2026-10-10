@@ -1,0 +1,20 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[name=a,width=0.48\textwidth,height=5.2cm,xmode=log,xmin=1500,xmax=4e5,xlabel={sample size $n$},ymin=-0.36,ymax=0.08,ytick={-0.3,-0.2,-0.1,0},ylabel={bias, bits},title={(a)\enspace latitude $\Lat$},legend style={at={(0.97,0.05)},anchor=south east,draw=none,fill=white,fill opacity=0.85,text opacity=1}]
+\addplot[color=mute,thick,mark=triangle*,mark size=2pt] table[x=n,y=S_plugin,col sep=comma]{data/estimator_bias.csv};
+\addplot[color=meaning,thick,mark=*,mark size=1.8pt] table[x=n,y=S_mm,col sep=comma]{data/estimator_bias.csv};
+\addplot[color=form,thick,mark=square*,mark size=1.8pt] table[x=n,y=S_cs,col sep=comma]{data/estimator_bias.csv};
+\addplot[black!60,dashed,samples=2,domain=1500:4e5] {0};
+\legend{plug-in,Miller--Madow,Chao--Shen}
+\end{axis}
+\begin{axis}[at={(a.east)},anchor=west,xshift=1.5cm,width=0.48\textwidth,height=5.2cm,xmode=log,xmin=1500,xmax=4e5,xlabel={sample size $n$},ymin=-0.36,ymax=0.08,ytick={-0.3,-0.2,-0.1,0},title={(b)\enspace doubt $\Dbt$},yticklabels={}]
+\addplot[color=mute,thick,mark=triangle*,mark size=2pt] table[x=n,y=D_plugin,col sep=comma]{data/estimator_bias.csv};
+\addplot[color=meaning,thick,mark=*,mark size=1.8pt] table[x=n,y=D_mm,col sep=comma]{data/estimator_bias.csv};
+\addplot[color=form,thick,mark=square*,mark size=1.8pt] table[x=n,y=D_cs,col sep=comma]{data/estimator_bias.csv};
+\addplot[black!60,dashed,samples=2,domain=1500:4e5] {0};
+\end{axis}
+\end{tikzpicture}
+\caption{Bias of three estimators of latitude and doubt on a Zipf-type law with known truth ($\Lat=\EstTruthS$ bits, $\Dbt=\EstTruthD$ bits; 60 replicates per size). All three underestimate at small $n$; from $n=\EstMMFrom$ on, Miller--Madow has the smallest absolute bias for both.}
+\label{fig:estimators}
+\end{figure}

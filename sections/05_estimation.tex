@@ -1,0 +1,41 @@
+\section{Estimating the ledger}\label{sec:estimation}
+Every quantity so far is a functional of a distribution. In practice one has a sample. This section states what can be said about the ledger of a source from $n$ independent observations of $(W,X)$, and what cannot.
+
+\subsection{The plug-in ledger}
+Replace $P$ by the empirical law $\hat P$. The five entries of $\hat P$ satisfy every identity of \cref{thm:ledger} exactly, since they are identities for any joint law. In particular the estimated balance $\hat E-\hat C=\hat\Lat-\hat\Dbt$ holds to rounding error. The estimates are not unbiased. By Jensen's inequality $\operatorname{E}[H(\hat P_Z)]\le H(P_Z)$ for any variable $Z$ with a finite range: the plug-in entropy is biased downward, and the bias is large when the alphabet is large relative to $n$ \citep{miller1955,paninski2003}. Latitude and doubt are conditional entropies, and both are computed within strata, meanings for $\Lat$ and forms for $\Dbt$, that contain few observations when the alphabet is large. Their plug-in values are therefore too small.
+
+Two corrections are in wide use. The Miller--Madow correction adds $(K_{\mathrm{obs}}-1)/(2n\ln2)$ bits to each entropy computed from $K_{\mathrm{obs}}$ observed categories \citep{miller1955}. The Chao--Shen estimator adjusts for the probability mass of unseen categories using the number of singletons \citep{chao2003}. For latitude and doubt we apply Miller--Madow within each stratum; \cref{fig:estimators} compares the three estimators on a law of known truth.
+
+\subsection{A certified interval for a small alphabet}
+For a variable with a small range one can bound the error rigorously. This covers, for example, a coarse meaning such as a chemical class or a semantic field.
+\begin{proposition}[Certified interval]\label{prop:cert}
+Let $Z$ have a range of $K\ge2$ values and let $\hat p$ be the empirical law of $n$ independent copies. For $\delta\in(0,1)$ put
+$\varepsilon=\sqrt{(2/n)\,(K\ln2+\ln(1/\delta))}$. If $\varepsilon\le\tfrac12$, then with probability at least $1-\delta$
+\begin{equation}
+\bigl|H(\hat p)-H(p)\bigr|\le\varepsilon\log\frac{K}{\varepsilon}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For the empirical law of $n$ independent draws from a distribution on $K$ points, $\Pr[\lVert\hat p-p\rVert_1\ge\varepsilon]\le2^Ke^{-n\varepsilon^2/2}$; this is the inequality of Bretagnolle and Huber-Carol in the form given by \citet{weissman2003}, whose constant is $(2^K-2)$. Setting the right side equal to $\delta$ and solving gives the stated $\varepsilon$, so $\lVert\hat p-p\rVert_1\le\varepsilon$ with probability at least $1-\delta$. If $\lVert p-q\rVert_1=\eta\le\tfrac12$, then $|H(p)-H(q)|\le-\eta\log(\eta/K)$ \citep[Thm.\,17.3.3]{cover2006}. The function $\eta\mapsto\eta\log(K/\eta)$ is increasing on $(0,K/e)$, and $\tfrac12<K/e$ for $K\ge2$, so the bound at $\eta\le\varepsilon$ is at most its value at $\varepsilon$.
+\end{proof}
+The interval needs $n\ge8\,(K\ln2+\ln(1/\delta))$ to exist, and it is conservative. \cref{tab:certified} gives the half-width beside the observed error for $K=25$: it never failed to cover in $2000$ replicates per size, and it is \CertRatioLo--\CertRatioHi{} times wider than the observed 95th percentile of the error. It is a guarantee, not an estimate. It applies to the entropy of a small alphabet, so it certifies $C$ when the meanings are coarse; it does not certify $E$, $\Lat$ or $\Dbt$ for a large vocabulary.
+\begin{table}[tbp]
+\caption{Certified half-width of \cref{prop:cert} for $K=25$ categories with probabilities proportional to $1/k$, at $\delta=0.05$, against the observed error over $2000$ replicates of each sample size.}\label{tab:certified}
+\centering\small
+\input{tables/tab_certified}
+\end{table}
+
+\subsection{Validation on a law of known truth}
+We built a joint law with the structure the ledger must handle: $3000$ meanings and $2500$ forms, both with Zipf--Mandelbrot weights, up to four forms per meaning, forms chosen in proportion to the square root of their frequency so that frequent forms are more ambiguous, and Dirichlet weights inside each meaning. Its ledger is computed exactly: $\Lat=\EstTruthS$ bits and $\Dbt=\EstTruthD$ bits. We drew $60$ samples at each size from $2\times10^3$ to $3\times10^5$ and applied the three estimators.
+\cref{fig:estimators} shows the bias. At $n=2000$ the plug-in estimates of latitude and doubt are too small by $\EstBiasSPlain$ and $\EstBiasDPlain$ bits, that is by $40$ and $54\,\%$. Miller--Madow removes most of this at large $n$ ($\EstBiasSMM$ and $\EstBiasDMM$ bits at $n=10^5$). Chao--Shen overshoots at intermediate sizes. All three converge as $n$ grows.
+\input{figures/fig_estimators}
+
+\subsection{What a finite corpus does and does not determine}
+For a distribution with finite entropy the plug-in estimator is strongly consistent, but there is no universal rate: for every sequence $a_n\to0$ there are distributions whose error exceeds $a_n$ infinitely often \citep{antos2001,silva2018}. When the alphabet is large relative to $n$ the plug-in estimator is also far from minimax-optimal \citep{paninski2003,wu2016}. A statement about how well a sample reveals a population entropy therefore needs the sample size, the alphabet and the tail, and we make none for heavy-tailed laws in general. The validation law above has finite entropy, and all three estimators converge on it (\cref{fig:estimators}).
+
+For SemCor we make only statements about the sample. \cref{tab:subsample} shows that the plug-in values of $C$ and $E$ are still rising at the full corpus: between half the corpus and all of it, $C$ rises by $\SubCInc$ bits and $E$ by $\SubEInc$ bits. The whole-corpus values are therefore not converged at this size, and we claim no value for a larger population. What we report instead are quantities that are stable under the checks of \cref{sec:semcor}: the ledger of a well-attested core, obtained by keeping only forms and meanings with at least $\tau$ observations; conditional profiles of well-attested items; and the sign of the balance $\Dbt-\Lat$, together with how that sign changes when the definition of the form changes. Each time, the estimator, the restriction of the source and the resampling unit are stated.
+\begin{table}[tbp]
+\caption{The plug-in ledger of SemCor as the sample grows (mean of $12$ random subsamples; the last row is the whole corpus). Bits. The values of $C$ and $E$ are still rising at the full corpus.}\label{tab:subsample}
+\centering\small
+\input{tables/tab_subsample}
+\end{table}

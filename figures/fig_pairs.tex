@@ -1,0 +1,14 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.78\textwidth,height=6.0cm,xmode=log,xmin=1e-4,xmax=0.6,ymin=62,ymax=100,ytick={65,70,75,80,85,90,95,100},
+  xlabel={$I(X;Y)$ for the pair, bits per codon},ylabel={share carried by synonymous choice, \%},legend style={at={(0.03,0.04)},anchor=south west,legend columns=1,draw=none,fill=white,fill opacity=0.85,text opacity=1}]
+\addplot[only marks,mark=*,mark size=2.4pt,color=form] table[x=I_X,y=share,col sep=comma]{data/pairs_bact.csv};
+\addplot[only marks,mark=square*,mark size=2.4pt,color=meaning] table[x=I_X,y=share,col sep=comma]{data/pairs_plastid.csv};
+\addplot[dashed,color=leak,line width=0.8pt,samples=2,domain=1e-4:0.6] {\PanelFrac};
+\legend{pairs of bacterial genomes,pairs with the plastid,six-genome panel}
+\end{axis}
+\end{tikzpicture}
+\caption{For each of the 15 pairs of genomes, the share of the information that identifies the genome of a codon that is carried by the choice among synonymous codons, $I(X;Y\!\mid\! W)/I(X;Y)$, against the total information of the pair. The share is stable over three orders of magnitude of $I(X;Y)$; it is lower when the plastid is one member of the pair, because its amino-acid composition differs more.}
+\label{fig:pairs}
+\end{figure}
