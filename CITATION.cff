@@ -9,12 +9,12 @@ authors:
     affiliation: "Independent Research"
     email: "m.m.atta@outlook.com"
 version: "1.0.0"
-doi: "10.5281/zenodo.232872860"
+doi: "10.5281/zenodo.23287286"
 date-released: "2026-09-29"
 repository-code: "https://github.com/4t1a/Latitude-Doubt"
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.232872860"
+    value: "10.5281/zenodo.23287286"
     description: "The Zenodo archive DOI for this version of the research artifact"
 keywords:
   - "semantic information"

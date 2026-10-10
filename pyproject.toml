@@ -51,7 +51,7 @@ dev = [
 [project.urls]
 "Homepage" = "https://github.com/4t1a/Latitude-Doubt"
 "Repository" = "https://github.com/4t1a/Latitude-Doubt"
-"DOI" = "https://doi.org/10.5281/zenodo.232872860"
+"DOI" = "https://doi.org/10.5281/zenodo.23287286"
 "Issue Tracker" = "https://github.com/4t1a/Latitude-Doubt/issues"
 
 [tool.pytest.ini_options]
