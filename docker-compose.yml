@@ -1,0 +1,7 @@
+services:
+  reproduce:
+    build: .
+    volumes:
+      - ./data_out:/workspace/data_out
+      - ./tables:/workspace/tables
+    command: python code/verification.py

@@ -9,7 +9,7 @@ on:
 
 jobs:
   verify-code:
-    name: Verify Code and Identities
+    name: Verify Code, Tests & Identities
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,8 +25,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest
 
-      - name: Run verification checks
+      - name: Run Pytest test suite
+        run: |
+          pytest tests/
+
+      - name: Run verification checks (100,000 distributions)
         run: |
           python code/verification.py
           python code/estimator_validation.py

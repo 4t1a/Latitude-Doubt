@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "latitude-and-doubt"
+version = "1.0.0"
+description = "An exact information-theoretic ledger of meaning in messages (Paper, Code, and Replication Pipeline)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Moustafa Mahmoud Atta", email = "m.m.atta@outlook.com" }
+]
+keywords = [
+  "information-theory",
+  "entropy",
+  "synonymy",
+  "ambiguity",
+  "sufficiency",
+  "leakage",
+  "genetic-code",
+  "steganography"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "numpy>=1.26.0",
+  "scipy>=1.12.0",
+  "pandas>=2.2.0",
+  "biopython>=1.83",
+  "nltk>=3.8.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "ruff>=0.3.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/4t1a/Latitude-Doubt"
+"Repository" = "https://github.com/4t1a/Latitude-Doubt"
+"DOI" = "https://doi.org/10.5281/zenodo.232872860"
+"Issue Tracker" = "https://github.com/4t1a/Latitude-Doubt/issues"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["code"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

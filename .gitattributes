@@ -1,0 +1,23 @@
+# Auto-detect text files and normalize line endings to LF on checkout
+* text=auto eol=lf
+
+# Explicit line endings for Windows script files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files
+*.pdf binary
+*.npz binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tar.gz binary
+*.zip binary
+
+# GitHub Linguist overrides
+# Treat generated data and tables as generated so repo language stats accurately reflect research source
+tables/*.tex linguist-generated=true
+data/*.csv linguist-generated=true
+data_out/*.json linguist-generated=true
+data_out/*.npz linguist-generated=true

@@ -1,0 +1,27 @@
+{
+  "title": "Latitude and Doubt: An exact ledger of meaning in messages",
+  "doi": "10.5281/zenodo.232872860",
+  "description": "Manuscript sources, compiled publication-ready PDF, experimental codebase, numerical verification, and replication data for 'Latitude and Doubt: An exact ledger of meaning in messages'.",
+  "creators": [
+    {
+      "name": "Atta, Moustafa Mahmoud",
+      "affiliation": "Independent Research",
+      "orcid": "0009-0008-6724-4698"
+    }
+  ],
+  "keywords": [
+    "information theory",
+    "entropy",
+    "synonymy",
+    "ambiguity",
+    "sufficiency",
+    "leakage",
+    "genetic code",
+    "steganography",
+    "reproducible research"
+  ],
+  "license": "MIT",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "access_right": "open"
+}
