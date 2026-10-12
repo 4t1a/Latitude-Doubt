@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://4t1a.github.io/Latitude-Doubt/sitemap.xml

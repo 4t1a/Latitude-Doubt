@@ -1,0 +1,9 @@
+# Latitude and Doubt: an exact ledger of meaning in messages
+
+> Preprint by Moustafa Mahmoud Atta (v1.0, 29 Sep 2026). For a source pairing meaning W with form X, entropy splits exactly: E = I + Λ and C = I + Δ, with latitude Λ = H(X|W) (speaker's freedom) and doubt Δ = H(W|X) (listener's uncertainty). Measured on six genomes (Λ = 1.235 to 1.501 bits per codon; 90,127 bits hidden in 240 real E. coli genes, proteins unchanged) and on English (SemCor, 22 wordnets).
+
+- [Explainer page](https://4t1a.github.io/Latitude-Doubt/): definitions, live calculator, charts, FAQ
+- [Paper PDF](https://4t1a.github.io/Latitude-Doubt/Latitude_Doubt.pdf)
+- [Paper (DOI)](https://doi.org/10.5281/zenodo.23287286)
+- [Code and data](https://github.com/4t1a/Latitude-Doubt)
+- [Hide a message in E. coli codons](https://4t1a.github.io/Latitude-Doubt/bie.html)
